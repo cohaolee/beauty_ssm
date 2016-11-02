@@ -17,7 +17,7 @@ import java.util.Set;
  * @author yingjun
  *
  */
-@Component
+//@Component
 public class RedisCache {
 	
 	

@@ -1,0 +1,184 @@
+.main-container {
+    padding: 9px 20px 20px;
+    text-align: left;
+}
+
+.floattop {
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    margin-left: 20px;
+    padding: 8px 20px 8px 0;
+    width: 99%;
+    background: #FFF;
+}
+
+    .floattop #fselect, .floattop #ugselect {
+        margin-right: 20px;
+    }
+
+.itemtitle {
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 0 !important;
+    *margin-bottom: 5px !important;
+    margin-bottom: -5px;
+    line-height: 20px;
+}
+
+    .itemtitle h3 {
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #09C;
+    }
+
+    .itemtitle ul {
+        float: left;
+        line-height: 18px;
+    }
+
+    .itemtitle .tab1 {
+        clear: none;
+    }
+
+        .itemtitle .tab1 a {
+            line-height: 20px;
+        }
+
+            .itemtitle .tab1 a span {
+                padding: 0 7px;
+                *padding: 1px 7px 0;
+                *line-height: 19px;
+            }
+
+            .itemtitle .tab1 a:hover {
+                background: #F5F5F5 url(/content/image/admincp/btn_block_3.gif) no-repeat 0 -40px;
+                color: #09C;
+            }
+
+                .itemtitle .tab1 a:hover span {
+                    background: url(/content/image/admincp/btn_block_3.gif) no-repeat right -60px;
+                }
+
+        .itemtitle .tab1 .hasdropmenu a:hover {
+            color: #666;
+        }
+
+        .itemtitle .tab1 .current a {
+            background: url(/content/image/admincp/btn_block_3.gif) no-repeat 0 0 !important;
+        }
+
+            .itemtitle .tab1 .current a span, .itemtitle .tab1 .current a:hover span {
+                background: url(/content/image/admincp/btn_block_3.gif) no-repeat right -20px;
+                color: #FFF;
+            }
+
+        .itemtitle .tab1 .dropmenu a {
+            background: none !important;
+        }
+
+            .itemtitle .tab1 .dropmenu a:hover, .itemtitle .tab1 .dropmenu a.current {
+                background: #DEEFFA !important;
+            }
+
+
+.tab1 {
+    overflow: hidden;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+    .tab1 li {
+        float: left;
+        margin-right: 3px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .tab1 a {
+        display: block;
+        line-height: 26px;
+        color: #666;
+        white-space: nowrap;
+    }
+
+        .tab1 a span {
+            display: block;
+            padding: 0 7px;
+        }
+
+        .tab1 a:hover {
+            text-decoration: none;
+            background: url(/content/image/admincp/btn_block_2.gif) no-repeat 0 -52px;
+            color: #09C;
+        }
+
+            .tab1 a:hover span {
+                display: block;
+                background: url(/content/image/admincp/btn_block_2.gif) no-repeat right -78px;
+            }
+
+    .tab1 .current {
+    }
+
+        .tab1 .current a {
+            background: url(/content/image/admincp/btn_block_2.gif) no-repeat 0 0;
+            color: #FFF;
+        }
+
+            .tab1 .current a span {
+                background: url(/content/image/admincp/btn_block_2.gif) no-repeat right -26px;
+            }
+
+            .tab1 .current a .highlight {
+                color: #FF9;
+            }
+
+            .tab1 .current a em {
+                margin-left: 3px;
+                background: url(/content/image/admincp/bg_repno.gif) no-repeat 0 -145px !important;
+                background: url(/content/image/admincp/bg_repno.gif) no-repeat 0 -147px;
+                color: #666;
+            }
+
+    .tab1 .hasdropmenu a em {
+        margin-left: 3px;
+        background: url(/content/image/admincp/bg_repno.gif) no-repeat 0 -195px !important;
+        background: url(/content/image/admincp/bg_repno.gif) no-repeat 0 -197px;
+        color: #FFF;
+    }
+
+    .tab1 .dropmenu a {
+        padding: 2px 7px;
+        background: none !important;
+        color: #666 !important;
+        font-weight: 400;
+    }
+
+        .tab1 .dropmenu a:hover {
+            background: #DEEFFA !important;
+        }
+
+    .tab1 .dropmenu li {
+        clear: both;
+        margin: 0;
+    }
+
+        .tab1 .dropmenu li.current a {
+            background: #DEEFFA !important;
+        }
+
+    .tab1 .hasdropmenu a em {
+        margin-left: 3px;
+        background: url(/content/image/admincp/bg_repno.gif) no-repeat 0 -195px !important;
+        background: url(/content/image/admincp/bg_repno.gif) no-repeat 0 -197px;
+        color: #FFF;
+    }
+
+.floattopempty {
+    height: 38px !important;
+    height: auto;
+}

@@ -1,0 +1,59 @@
+/*±íµ¥Ò³*/
+.editor-label {
+    font-weight: 700;
+    border-top: 1px dotted #DEEFFB;
+    padding: 5px;
+    height: 20px;
+    color: #555;
+}
+
+.editor-field {
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.editor-field textarea{
+    width: 400px;
+    height: 75px;
+    margin-right:10px;
+}
+
+.text-box {
+    margin-right: 10px;
+    width: 250px;
+}
+
+    .text-box:hover, .text-box:focus {
+        border-color: #09C;
+        background: #F5F9FD;
+    }
+
+.field-validation-error {
+    color: #f66;
+}
+
+.input-validation-error, .input-validation-error:hover, .input-validation-error:focus {
+    border-color: #f66;
+    background: #F5F9FD;
+}
+
+
+.display-label {
+    font-weight: 700;
+    border-top: 1px dotted #DEEFFB;
+    padding: 5px;
+    height: 20px;
+    color: #555;
+}
+
+.display-field {
+    padding-left: 40px;
+    padding-bottom: 5px;
+}
+
+.text-brief { 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    word-wrap:normal; 
+} 

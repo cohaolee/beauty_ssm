@@ -27,6 +27,7 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
 	@ResponseBody
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
 		LOG.error("访问" + request.getRequestURI() + " 发生错误, 错误信息:" + ex.getMessage());
+		//LOG.error("错误堆栈：{}",ex);
 		//这里有2种选择
 		//跳转到定制化的错误页面
 	    /*ModelAndView error = new ModelAndView("error");

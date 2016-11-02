@@ -93,7 +93,7 @@
 		<property name="port" value="${redis.port}" />
 		<property name="password" value="${redis.pass}" />
 		<property name="poolConfig" ref="jedisPoolConfig" />
-	</bean> 
+	</bean>
 
 	<!-- redisTemplate配置，redisTemplate是对Jedis的对redis操作的扩展，有更多的操作，封装使操作更便捷 -->
 	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
