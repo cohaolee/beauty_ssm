@@ -17,4 +17,10 @@ public interface ReportCateDao {
 	 */
 	List<ReportCate> getSubCates(@Param("id") int id);
 
+	/**
+	 * 添加分类
+	 * @param cate
+	 * @return
+	 */
+	void addCate(ReportCate cate);
 }

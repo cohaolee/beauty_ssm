@@ -1,5 +1,6 @@
 package com.yingjun.ssm.web.bi;
 
+import com.yingjun.ssm.dto.BaseResult;
 import com.yingjun.ssm.entity.Goods;
 import com.yingjun.ssm.entity.bi.report.ReportCate;
 import com.yingjun.ssm.service.bi.report.ReportCateService;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/reportcate")
+@RequestMapping("/bi/reportcate")
 public class ReportCateController {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
@@ -33,16 +34,42 @@ public class ReportCateController {
 
 	/**
 	 * 获取分类实体列表
+	 *
 	 * @param model
 	 * @param id
 	 * @param parentId
 	 * @return
 	 */
 	@RequestMapping(value = "/treenodes", method = RequestMethod.GET)
-	public @ResponseBody List<ReportCate> treeNodes(Model model, Integer id, Integer parentId) {
+	public
+	@ResponseBody
+	List<ReportCate> treeNodes(Model model, Integer id, Integer parentId) {
 		LOG.info("invoke----------/reportcate/treenodes id:{} parentId:{}", id, parentId);
 		List<ReportCate> subCates = reportCateService.getSubCates(id);
 		return subCates;
+	}
+
+
+	@RequestMapping(value = "/addoredit", method = RequestMethod.POST)
+	public
+	@ResponseBody
+	BaseResult<Object> addOrEdit(Model model, ReportCate cate, Integer commandType) {
+		LOG.info("invoke----------/reportcate/addoredit " +
+						"cateId:{} parentId:{} commandType:{}"
+				, cate.getCateId()
+				, cate.getParentId()
+				, commandType);
+
+
+		if (commandType == 1) {
+			try {
+				reportCateService.addCate(cate);
+			} catch (Exception ex) {
+				return new BaseResult<Object>(false, "添加失败，" + ex.getMessage());
+			}
+		}
+
+		return new BaseResult<Object>(true, null);
 	}
 
 }

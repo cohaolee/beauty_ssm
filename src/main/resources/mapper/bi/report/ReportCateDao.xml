@@ -7,9 +7,29 @@
 		SELECT *
 		FROM bi_report_cate
 		WHERE parent_id = #{id}
-		ORDER BY sort DESC;
+		ORDER BY sort;
 
 	</select>
 
+
+	<!--查询子分类-->
+	<select id="addCate"  parameterType="com.yingjun.ssm.entity.bi.report.ReportCate">
+		INSERT INTO bi_report_cate (
+			parent_id
+			,name
+			,status
+			,sort
+			,create_time
+			,update_time
+		) VALUES (
+			#{parentId}
+			,#{name}
+			,#{status}
+			,#{sort}
+			,#{createTime}
+			,#{updateTime}
+		)
+
+	</select>
 
 </mapper>
