@@ -38,7 +38,7 @@ public class ReportCateServiceImpl implements ReportCateService {
 		cate.setSort(1);
 
 		//计算排序
-		List<ReportCate> brotherCates = getBrotherCates(cate.getParentId());
+		List<ReportCate> brotherCates =reportCateDao.getSubCates(cate.getParentId());
 		if (brotherCates != null && brotherCates.size() > 0) {
 			int max = brotherCates.stream().mapToInt(i -> i.getSort()).max().getAsInt();
 			cate.setSort(max + 1);

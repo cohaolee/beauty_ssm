@@ -1,5 +1,6 @@
 package com.yingjun.ssm.service.bi.report.impl;
 
+import com.yingjun.ssm.entity.bi.report.ReportCate;
 import com.yingjun.ssm.service.bi.report.ReportCateService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +28,10 @@ public class ReportCateServiceImplTest {
 
 	@Test
 	public void testAddCate() throws Exception {
-
+		ReportCate reportCate = new ReportCate();
+		reportCate.setParentId(2);
+		reportCate.setName("测试3");
+		service.addCate(reportCate);
 	}
 
 	@Test
