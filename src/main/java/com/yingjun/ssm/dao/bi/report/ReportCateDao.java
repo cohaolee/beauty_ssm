@@ -19,8 +19,50 @@ public interface ReportCateDao {
 
 	/**
 	 * 添加分类
+	 *
 	 * @param cate
 	 * @return
 	 */
 	void addCate(ReportCate cate);
+
+	/**
+	 * 修改分类
+	 *
+	 * @param cate
+	 * @return
+	 */
+	Integer editCateName(ReportCate cate);
+
+
+	/**
+	 * 获取id的分类
+	 *
+	 * @param id 当前分类Id
+	 * @return
+	 */
+	ReportCate getCate(@Param("id") int id);
+
+	/**
+	 * 更新分类所以字段
+	 *
+	 * @param cate 当前分类Id
+	 * @return
+	 */
+	Integer updateCate(ReportCate cate);
+
+	/**
+	 * 批量更新分类所以字段
+	 *
+	 * @param cates 当前分类Id
+	 * @return
+	 */
+	Integer batchUpdateCate(List<ReportCate> cates);
+
+
+	/**
+	 * 删除
+	 * @param cateId
+	 * @return
+	 */
+	Integer delete(int cateId);
 }

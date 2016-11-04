@@ -41,9 +41,9 @@
             <div class="panel-header clearfix">
                 <h3 class="pull-left">报表分类</h3>
                 <div class="pull-right">
-                    <button class="button button-small" id="btnNodeUp" title="向上"><i class="icon-chevron-up"></i>
+                    <button class="button button-small" id="btnNodeForward" title="排序前进"><i class="icon-chevron-up"></i>
                     </button>
-                    <button class="button button-small" id="btnNodeDown" title="向下"><i class="icon-chevron-down"></i>
+                    <button class="button button-small" id="btnNodeBack" title="排序后退"><i class="icon-chevron-down"></i>
                     </button>
                     <button class="button button-small" id="btnNodeAdd" title="添加子分类"><i class="icon-plus-sign"></i>
                     </button>
@@ -100,9 +100,25 @@
                                     }
                                 }
                             },
+                            load: function () {
+                                console.log('load');
+                                console.log('curSelectedNodeId ' + curSelectedNodeId);
+
+                                if (needSelected && tree && curSelectedNodeId > 0) {
+                                    setTimeout(function () {
+                                        var node = tree.findNode(curSelectedNodeId);
+                                        tree.setSelected(node);
+                                        needSelected = false;
+                                        console.log('load->selected')
+                                    }, 300);
+                                }
+                            },
                         }
 
                     });
+
+                    var curSelectedNodeId = 0;
+                    var needSelected = false;
 
                     //树形类
                     var tree = new Tree.TreeList({
@@ -112,6 +128,12 @@
                         checkType: 'none',
                         showRoot: true,
                         showLine: true,
+                        listeners: {
+                            itemselected: function (e) {
+                                curSelectedNodeId = e.item.id;
+                                console.log('curSelectedNodeId ' + curSelectedNodeId);
+                            },
+                        },
                     }).render();
 
 
@@ -120,18 +142,21 @@
 //                        $('body').trigger('treeNodeClick', item);
 //                    });
 
-                    var refreshNodeFun = function(){
+                    var refreshNodeFun = function () {
                         var node = tree.getSelected();
                         if (node) {
                             treeStore.loadNode(node, true);
+                            needSelected = true;
                             return;
                         }
                     }
 
-                    var refreshParentNodeFun = function(){
+                    var refreshParentNodeFun = function () {
                         var node = tree.getSelected();
                         if (node) {
                             treeStore.loadNode(node.parent, true);
+                            needSelected = true;
+                            console.log('refreshParentNodeFun')
                             return;
                         }
 
@@ -147,7 +172,7 @@
                         }
 
                         refreshNode = node;
-                        $('body').trigger('addOrEditClicked', [node, 1, refreshParentNodeFun]);
+                        $('body').trigger('addOrEditClicked', [node, 1, refreshNodeFun]);
                     });
 
                     $("#btnNodeEdit").click(function () {
@@ -166,69 +191,72 @@
                     });
 
 
-                    $("#btnNodeUp").click(function () {
+                    $("#btnNodeForward").click(function () {
                         var node = tree.getSelected();
                         if (!node || node.cateId == -1) {
                             return;
                         }
-                        upDownCate(node, true);
+                        removeSort(node, true);
                     });
 
-                    $("#btnNodeDown").click(function () {
+                    $("#btnNodeBack").click(function () {
                         var node = tree.getSelected();
                         if (!node || node.cateId == -1) {
                             return;
                         }
-                        upDownCate(node, false);
+                        removeSort(node, false);
                     });
 
                     //节点上下移动
-                    function upDownCate(node, up) {
+                    function removeSort(node, forward) {
                         loadMask.show();
-                        $.post('@Url.Action("TreeNodeUpOrDown", "JobCate")'
-                                , {cateId: node.cateId, parentId: node.parent.cateId, up: up}
+                        $.post('<%=path%>/bi/reportcate/removesort'
+                                , {cateId: node.id, parentId: node.parent.id, forward: forward}
                                 , function (data) {
                                     loadMask.hide();
-                                    treeStore.loadNode(node.parent, true);
                                     if (data && data.success) {
-                                        store.load();
+                                        refreshParentNodeFun();
                                     } else {
                                         if (data.error != '') {
                                             BUI.Message.Alert(data.error, 'error');
                                         }
                                     }
-                                }, 'json').error(function (jqXHR, textStatus, responseText) {
-                            loadMask.hide();
-                            treeStore.loadNode(node.parent, true);
-                            BUI.Message.Alert("网络错误，" + jqXHR.status, "error");
-                        });
+                                }, 'json')
+                                .error(function (jqXHR, textStatus, responseText) {
+                                    loadMask.hide();
+                                    treeStore.loadNode(node.parent, true);
+                                    BUI.Message.Alert("网络错误，" + jqXHR.status, "error");
+                                });
                     }
 
 
-                    $("#btnCateDelete").click(function () {
+                    $("#btnNodeDelete").click(function () {
                         var node = tree.getSelected();
                         if (!node || node.cateId == -1) {
                             return;
                         }
-                        $.post('@Url.Action("DeleteNode", "JobCate")'
-                                , {cateId: node.cateId}
-                                , function (data) {
-                                    loadMask.hide();
-                                    treeStore.loadNode(node.parent, true);
-                                    if (data && data.success) {
-                                        store.load();
-                                    } else {
-                                        if (data.error != '') {
-                                            BUI.Message.Alert(data.error, 'error');
+                        BUI.Message.Confirm("确认删除？", function () {
+                            $.post('<%=path%>/bi/reportcate/delete'
+                                    , {cateId: node.id}
+                                    , function (data) {
+                                        loadMask.hide();
+                                        if (data && data.success) {
+                                            curSelectedNodeId = node.parent.id;//焦点移动到父类
+                                            refreshParentNodeFun();
+                                        } else {
+                                            if (data.error != '') {
+                                                BUI.Message.Alert(data.error, 'error');
+                                            }
                                         }
-                                    }
-                                }, 'json').error(function (jqXHR, textStatus, responseText) {
-                            loadMask.hide();
-                            treeStore.loadNode(node.parent, true);
-                            BUI.Message.Alert("网络错误，" + jqXHR.status, "error");
+                                    }, 'json')
+                                    .error(function (jqXHR, textStatus, responseText) {
+                                        loadMask.hide();
+                                        BUI.Message.Alert("网络错误，" + jqXHR.status, "error");
+                                    });
                         });
                     });
                 });
+
     </script>
 
 
@@ -339,6 +367,11 @@
                         //监听主页面事件
                         $("body").bind("addOrEditClicked", function (event, item, commandType, successFun) {
                             callBackFun = successFun;
+
+                            $('#nodeForm [name=parentId]').val(0);
+                            $('#nodeForm [name=parentName]').val('');
+                            $('#nodeForm [name=cateId]').val(0);
+                            $('#nodeForm [name=name]').val('');
 
                             console.log(callBackFun);
 

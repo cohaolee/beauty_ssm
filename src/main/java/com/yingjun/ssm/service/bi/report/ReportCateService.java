@@ -13,4 +13,19 @@ public interface ReportCateService {
 	void addCate(ReportCate cate);
 
 
+	void editCateName(ReportCate cate);
+
+	/**
+	 * 移动排序
+	 * @param cateId
+	 * @param forward
+	 */
+	void removeSort(int cateId, boolean forward);
+
+
+	/**
+	 * 删除
+	 * @param cateId
+	 */
+	void delete(int cateId);
 }

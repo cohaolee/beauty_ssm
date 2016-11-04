@@ -11,9 +11,16 @@
 
 	</select>
 
+    <!--查询指定分类-->
+    <select id="getCate" resultType="ReportCate">
+		SELECT *
+		FROM bi_report_cate
+		WHERE cate_id = #{id}
+	</select>
 
-	<!--查询子分类-->
-	<select id="addCate"  parameterType="com.yingjun.ssm.entity.bi.report.ReportCate">
+
+    <!--查询子分类-->
+    <select id="addCate" parameterType="com.yingjun.ssm.entity.bi.report.ReportCate">
 		INSERT INTO bi_report_cate (
 			parent_id
 			,name
@@ -22,14 +29,51 @@
 			,create_time
 			,update_time
 		) VALUES (
-			#{parentId}
+			 #{parentId}
 			,#{name}
 			,#{status}
 			,#{sort}
 			,#{createTime}
 			,#{updateTime}
 		)
-
 	</select>
+
+
+    <select id="editCateName" resultType="Integer" parameterType="com.yingjun.ssm.entity.bi.report.ReportCate">
+		UPDATE bi_report_cate SET name=#{name} WHERE cate_id=#{cateId}
+	</select>
+
+    <!--更新-->
+    <select id="updateCate" resultType="Integer" parameterType="com.yingjun.ssm.entity.bi.report.ReportCate">
+		UPDATE bi_report_cate SET
+			parent_id=#{parentId}
+			,name=#{name}
+			,status=#{status}
+			,sort=#{sort}
+			,create_time=#{createTime}
+			,update_time=#{updateTime}
+		WHERE cate_id=#{cateId}
+	</select>
+
+    <!--批量更新-->
+    <select id="batchUpdateCate" resultType="Integer" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update bi_report_cate
+            <set>
+                parent_id=#{item.parentId}
+                ,name=#{item.name}
+                ,status=#{item.status}
+                ,sort=#{item.sort}
+                ,create_time=#{item.createTime}
+                ,update_time=#{item.updateTime}
+            </set>
+            where cate_id = #{item.cateId}
+        </foreach>
+    </select>
+
+
+    <select id="delete" resultType="Integer" >
+        DELETE FROM bi_report_cate WHERE cate_id=#{cateId}
+    </select>
 
 </mapper>

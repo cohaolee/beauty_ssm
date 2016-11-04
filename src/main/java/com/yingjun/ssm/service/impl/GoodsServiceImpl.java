@@ -7,7 +7,7 @@ import com.yingjun.ssm.dao.UserDao;
 import com.yingjun.ssm.entity.Goods;
 import com.yingjun.ssm.entity.User;
 import com.yingjun.ssm.enums.ResultEnum;
-import com.yingjun.ssm.exception.BizException;
+import com.yingjun.ssm.exception.ErrorException;
 import com.yingjun.ssm.service.GoodsService;
 import org.apache.commons.collections.MapUtils;
 import org.slf4j.Logger;
@@ -55,7 +55,7 @@ public class GoodsServiceImpl implements GoodsService {
 		// 用户校验
 		User user = userDao.queryByPhone(userPhone);
 		if (user == null) {
-			throw new BizException(ResultEnum.INVALID_USER.getMsg());
+			throw new ErrorException(ResultEnum.INVALID_USER.getMsg());
 		}
 		if (useProcedure) {
 			// 通过存储方式的方法进行操作
@@ -68,7 +68,7 @@ public class GoodsServiceImpl implements GoodsService {
 			int result = MapUtils.getInteger(map, "result", -1);
 			if (result <= 0) {
 				// 买卖失败
-				throw new BizException(ResultEnum.INNER_ERROR.getMsg());
+				throw new ErrorException(ResultEnum.INNER_ERROR.getMsg());
 			} else {
 				// 买卖成功
 				// 此时缓存中的数据不是最新的，需要对缓存进行清理（具体的缓存策略还是要根据具体需求制定）
@@ -81,13 +81,13 @@ public class GoodsServiceImpl implements GoodsService {
 			int inserCount = orderDao.insertOrder(user.getUserId(), goodsId, "普通买卖");
 			if (inserCount <= 0) {
 				// 买卖失败
-				throw new BizException(ResultEnum.DB_UPDATE_RESULT_ERROR.getMsg());
+				throw new ErrorException(ResultEnum.DB_UPDATE_RESULT_ERROR.getMsg());
 			} else {
 				// 减库存
 				int updateCount = goodsDao.reduceNumber(goodsId);
 				if (updateCount <= 0) {
 					// 减库存失败
-					throw new BizException(ResultEnum.DB_UPDATE_RESULT_ERROR.getMsg());
+					throw new ErrorException(ResultEnum.DB_UPDATE_RESULT_ERROR.getMsg());
 				} else {
 					// 买卖成功
 					// 此时缓存中的数据不再是最新的，需要对缓存进行清理（具体的缓存策略还是要根据具体需求制定）

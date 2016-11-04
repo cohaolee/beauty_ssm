@@ -26,10 +26,16 @@
 	    <property name="minIdle" value="${druid.pool.size.min}" />   
 	    <property name="maxActive" value="${druid.pool.size.max}" />  
 	    
-	    <!-- 配置监控统计拦截的filters，wall用于防止sql注入，stat用于统计分析 -->
-	    <property name="filters" value="wall,stat" /> 
+	    <!-- 配置监控统计拦截的filters，wall用于防止sql注入单独配置，stat用于统计分析 -->
+	    <!--<property name="filters" value="wall,stat" />-->
+        <property name="filters" value="stat" />
 	</bean>
-    
+
+    <!--wall用于防止sql注入，支持多语句-->
+    <bean id="wall-config" class="com.alibaba.druid.wall.WallConfig">
+        <property name="multiStatementAllow" value="true" />
+    </bean>
+
 
     <!--3、配置SqlSessionFactory对象-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

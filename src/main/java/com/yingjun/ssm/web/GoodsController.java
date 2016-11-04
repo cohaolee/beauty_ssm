@@ -3,7 +3,7 @@ package com.yingjun.ssm.web;
 import com.yingjun.ssm.dto.BaseResult;
 import com.yingjun.ssm.entity.Goods;
 import com.yingjun.ssm.enums.ResultEnum;
-import com.yingjun.ssm.exception.BizException;
+import com.yingjun.ssm.exception.ErrorException;
 import com.yingjun.ssm.service.GoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +53,7 @@ public class GoodsController {
         //}
         try {
             goodsService.buyGoods(userPhone, goods.getGoodsId(), false);
-        } catch (BizException e) {
+        } catch (ErrorException e) {
             return new BaseResult<Object>(false, e.getMessage());
         } catch (Exception e) {
             return new BaseResult<Object>(false, ResultEnum.INNER_ERROR.getMsg());

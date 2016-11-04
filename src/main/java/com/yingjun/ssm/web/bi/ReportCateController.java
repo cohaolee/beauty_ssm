@@ -1,7 +1,6 @@
 package com.yingjun.ssm.web.bi;
 
 import com.yingjun.ssm.dto.BaseResult;
-import com.yingjun.ssm.entity.Goods;
 import com.yingjun.ssm.entity.bi.report.ReportCate;
 import com.yingjun.ssm.service.bi.report.ReportCateService;
 import org.slf4j.Logger;
@@ -60,13 +59,61 @@ public class ReportCateController {
 				, cate.getParentId()
 				, commandType);
 
-
+		//添加
 		if (commandType == 1) {
 			try {
 				reportCateService.addCate(cate);
 			} catch (Exception ex) {
 				return new BaseResult<Object>(false, "添加失败，" + ex.getMessage());
 			}
+		}
+
+		//修改
+		if (commandType == 2) {
+			try {
+				reportCateService.editCateName(cate);
+			} catch (Exception ex) {
+				return new BaseResult<Object>(false, "更新失败，" + ex.getMessage());
+			}
+		}
+
+		return new BaseResult<Object>(true, null);
+	}
+
+
+	@RequestMapping(value = "/removesort", method = RequestMethod.POST)
+	public
+	@ResponseBody
+	BaseResult<Object> removeSort(Model model, int cateId, boolean forward) {
+		LOG.info("invoke----------/reportcate/removesort " +
+						"cateId:{} forward:{} "
+				, cateId
+				, forward);
+
+		//添加
+		try {
+			reportCateService.removeSort(cateId, forward);
+		} catch (Exception ex) {
+			return new BaseResult<Object>(false, "排序移动失败，" + ex.getMessage());
+		}
+
+		return new BaseResult<Object>(true, null);
+	}
+
+
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public
+	@ResponseBody
+	BaseResult<Object> delete(Model model, int cateId) {
+		LOG.info("invoke----------/reportcate/delete " +
+						"cateId:{} forward:{} "
+				, cateId);
+
+		//添加
+		try {
+			reportCateService.delete(cateId);
+		} catch (Exception ex) {
+			return new BaseResult<Object>(false, "删除失败，" + ex.getMessage());
 		}
 
 		return new BaseResult<Object>(true, null);
