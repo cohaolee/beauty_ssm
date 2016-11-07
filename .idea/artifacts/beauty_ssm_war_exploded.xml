@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="beauty_ssm:war exploded">
-    <output-path>$PROJECT_DIR$/target/beauty_ssm_0.0.1-SNAPSHOT_20161104</output-path>
+    <output-path>$PROJECT_DIR$/target/beauty_ssm_0.0.1-SNAPSHOT_20161107</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -55,10 +55,11 @@
           <element id="library" level="project" name="Maven: com.dyuproject.protostuff:protostuff-api:1.0.8" />
           <element id="library" level="project" name="Maven: com.dyuproject.protostuff:protostuff-runtime:1.0.8" />
           <element id="library" level="project" name="Maven: com.dyuproject.protostuff:protostuff-collectionschema:1.0.8" />
+          <element id="library" level="project" name="Maven: org.sitemesh:sitemesh:3.0.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/beauty_ssm_0.0.1-SNAPSHOT_20161104/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/beauty_ssm_0.0.1-SNAPSHOT_20161107/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="beauty_ssm/web/Web" />
     </root>

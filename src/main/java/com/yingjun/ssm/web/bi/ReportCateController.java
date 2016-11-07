@@ -119,4 +119,10 @@ public class ReportCateController {
 		return new BaseResult<Object>(true, null);
 	}
 
+
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(Model model) {
+		return "bi/report/test";
+	}
+
 }

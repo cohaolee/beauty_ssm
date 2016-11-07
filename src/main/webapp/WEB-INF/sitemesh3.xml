@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <mapping path="/*" decorator="/WEB-INF/shared/default-layout.jsp"/>
+    <mapping path="/user" decorator="/WEB-INF/shared/user-layout.jsp"/>
+    <mapping path="/bi/reportcate/*" decorator="/WEB-INF/shared/bui-layout.jsp"/>
+
+
+    <!-- 排除不需要装饰的路径  -->
+    <!--<mapping path="/javadoc/*" exclue="true"/>-->
+    <!--<mapping path="/brochures/*" exclue="true"/>-->
+
+
+    <!-- 可选约定. 在单一路径上使用多个装饰器 -->
+    <!--<mapping>-->
+        <!--<path>/articles/*</path>-->
+        <!--<decorator>/decorators/article.html</decorator>-->
+        <!--<decorator>/decorators/two-page-layout.html</decorator>-->
+        <!--<decorator>/decorators/common.html</decorator>-->
+    <!--</mapping>-->
+</sitemesh>

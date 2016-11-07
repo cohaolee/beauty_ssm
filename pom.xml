@@ -228,6 +228,13 @@
 			<version>1.0.8</version>
 		</dependency>
 		<!--mybatis 数据访问层 end -->
+
+		<dependency>
+			<groupId>org.sitemesh</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
 	</dependencies>
 	<!-- Build Settings -->
 	<!--http://maven.apache.org/pom.html#Build_Settings -->

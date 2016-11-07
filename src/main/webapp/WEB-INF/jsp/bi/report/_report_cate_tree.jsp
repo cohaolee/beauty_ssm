@@ -8,29 +8,9 @@
 
 <%@include file="../../common/tag.jsp" %>
 
-<%--
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-    request.setCharacterEncoding("utf-8");
-    String path = request.getContextPath();
-%>
---%>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=path%>/resource/ui/bui/css/bs3/dpl-min.css" rel="stylesheet"/>
-    <link href="<%=path%>/resource/ui/bui/css/bs3/bui-min.css" rel="stylesheet"/>
-    <link href="<%=path%>/resource/ui/bui/cs/extension.css" rel="stylesheet"/>
-    <link href="<%=path%>/resource/css/admin/adminview.css" rel="stylesheet"/>
-
-    <script src="<%=path%>/resource/js/jquery-1.10.2.min.js"></script>
-    <script src="<%=path%>/resource/ui/bui/seed-min.js" data-debug="true"></script>
-    <script src="<%=path%>/resource/js/util/bui-util.js"></script>
-
     <title>模板</title>
-
 </head>
 
 <body>
@@ -399,5 +379,7 @@
     </div>
 
 </body>
+<sitemesh_div>ddddddddddddddd</sitemesh_div>
+
 </html>
 
