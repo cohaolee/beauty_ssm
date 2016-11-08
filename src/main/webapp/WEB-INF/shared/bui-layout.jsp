@@ -31,6 +31,6 @@
 <body>
 <sitemesh:write property='body'/>
 aaaaa:
-<sitemesh:write property='sitemesh_div'/>
+<sitemesh:write property='page.heading'/>
 </body>
 </html>

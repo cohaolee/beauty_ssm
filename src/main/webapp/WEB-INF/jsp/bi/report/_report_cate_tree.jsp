@@ -377,9 +377,9 @@
         </script>
 
     </div>
-
+    <footer>ddddddddddddddd</footer>
+    <content tag="heading">eeeeeeeeeeeee</content>
 </body>
-<sitemesh_div>ddddddddddddddd</sitemesh_div>
 
 </html>
 

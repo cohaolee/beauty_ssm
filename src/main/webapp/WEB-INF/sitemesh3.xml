@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemesh>
+    <content-processor>
+        <tag-rule-bundle class="org.sitemesh.content.tagrules.html.Sm2TagRuleBundle" />
+    </content-processor>
+
     <mapping path="/*" decorator="/WEB-INF/shared/default-layout.jsp"/>
     <mapping path="/user" decorator="/WEB-INF/shared/user-layout.jsp"/>
     <mapping path="/bi/reportcate/*" decorator="/WEB-INF/shared/bui-layout.jsp"/>
