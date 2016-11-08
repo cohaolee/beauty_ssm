@@ -81,9 +81,12 @@
                                 if (needSelected && tree && curSelectedNodeId > 0) {
                                     setTimeout(function () {
                                         var node = tree.findNode(curSelectedNodeId);
-                                        tree.setSelected(node);
-                                        needSelected = false;
-                                        console.log('load->selected')
+                                        //移动时，节点有可能移动到未加载的节点上
+                                        if(node) {
+                                            tree.setSelected(node);
+                                            needSelected = false;
+                                            console.log('load->selected')
+                                        }
                                     }, 300);
                                 }
                             },
@@ -103,8 +106,13 @@
                         showRoot: true,
                         showLine: true,
                         listeners: {
-                            itemselected: function (e) {
-                                curSelectedNodeId = e.item.id;
+                            itemselected: function (ev) {
+                                if (ev.item) {
+                                    curSelectedNodeId = ev.item.id;
+                                } else {
+                                    console.log(ev);
+                                }
+
                                 console.log('curSelectedNodeId ' + curSelectedNodeId);
                             },
                         },

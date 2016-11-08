@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f4c8bc9-7103-4fa9-ae38-9498790a95b3" name="Default" comment="">
+    <list default="true" id="7f4c8bc9-7103-4fa9-ae38-9498790a95b3" name="Default" comment="分类管理">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree.jsp" />
     </list>
     <ignored path="beauty_ssm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,7 +25,7 @@
     <favorites_list name="beauty_ssm" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.45699278">
+    <splitter split-orientation="horizontal" split-proportion="0.41891006">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="report_manage.jsp" pinned="false" current-in-tab="false">
@@ -60,8 +61,8 @@
           <file leaf-file-name="ReportCateController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/yingjun/ssm/web/bi/ReportCateController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.48736998">
-                  <caret line="91" column="27" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+                <state vertical-scroll-proportion="0.79940563">
+                  <caret line="157" column="5" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -101,7 +102,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree.jsp">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="-6.875">
-                  <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="526" selection-end-column="6" />
+                  <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="534" selection-end-column="6" />
                   <folding>
                     <element signature="n#div#0;n#!!top" expanded="false" />
                     <element signature="n#div#1;n#!!top" expanded="false" />
@@ -131,10 +132,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="ReportCateServiceImpl.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ReportCateServiceImpl.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/yingjun/ssm/service/bi/report/impl/ReportCateServiceImpl.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7488856">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
                   <folding />
                 </state>
@@ -154,11 +155,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_report_cate_tree.jsp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="_report_cate_tree.jsp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-4.9259257">
-                  <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.42972535">
+                  <caret line="83" column="61" selection-start-line="83" selection-start-column="61" selection-end-line="83" selection-end-column="61" />
                   <folding />
                 </state>
               </provider>
@@ -224,12 +225,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/shared/bui/bui-layout.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/yingjun/ssm/dao/bi/report/ReportCateDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yingjun/ssm/service/bi/report/ReportCateService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/report_cate_tree.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/yingjun/ssm/web/bi/ReportController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/sitemesh3.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yingjun/ssm/web/bi/ReportCateController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yingjun/ssm/service/bi/report/impl/ReportCateServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yingjun/ssm/web/bi/ReportCateController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree.jsp" />
       </list>
     </option>
   </component>
@@ -1325,7 +1326,7 @@
       <workItem from="1478133936209" duration="27038000" />
       <workItem from="1478219629744" duration="26568000" />
       <workItem from="1478483411784" duration="11216000" />
-      <workItem from="1478566167715" duration="16186000" />
+      <workItem from="1478566167715" duration="19185000" />
     </task>
     <task id="LOCAL-00001" summary="分类管理">
       <created>1478165642766</created>
@@ -1357,7 +1358,13 @@
       <option name="project" value="LOCAL" />
       <updated>1478586582434</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="分类管理">
+      <created>1478586590231</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1478586590231</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1393,7 +1400,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155152000" />
+    <option name="totallyTimeSpent" value="158151000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1413,11 +1420,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3716143" sideWeight="0.45095947" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23943663" sideWeight="0.4488273" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23943663" sideWeight="0.45095947" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14818764" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23943663" sideWeight="0.55117273" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23943663" sideWeight="0.5490405" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1881663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1827,19 +1834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="526" selection-end-column="6" />
-          <folding>
-            <element signature="n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#!!top" expanded="false" />
-            <element signature="n#script#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yingjun/ssm/entity/bi/report/ReportCate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1885,16 +1879,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yingjun/ssm/service/bi/report/impl/ReportCateServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7488856">
+        <state vertical-scroll-proportion="0.0">
           <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="534" selection-end-column="6" />
+          <folding>
+            <element signature="n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#!!top" expanded="false" />
+            <element signature="n#script#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yingjun/ssm/web/bi/ReportCateController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48736998">
-          <caret line="91" column="27" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.79940563">
+          <caret line="157" column="5" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
           <folding />
         </state>
       </provider>
