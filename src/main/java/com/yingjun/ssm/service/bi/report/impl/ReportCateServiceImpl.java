@@ -69,6 +69,8 @@ public class ReportCateServiceImpl implements ReportCateService {
 	 */
 	@Override
 	public void removeSort(int cateId, boolean forward) {
+		LOG.info("移动位置");
+
 		List<ReportCate> brotherCates = getBrotherCates(cateId);
 
 		//记录当前cateid的sort
@@ -88,8 +90,10 @@ public class ReportCateServiceImpl implements ReportCateService {
 
 		if (forward) {
 			//region 前进
+			LOG.info("前进");
 			//第一个位置不用重排
 			if (curIndex == 1) {
+				LOG.info("前进位置不变");
 				return;
 			}
 
@@ -110,8 +114,10 @@ public class ReportCateServiceImpl implements ReportCateService {
 			//endregion
 		} else {
 			//region 后移动
+			LOG.info("后退");
 			//最后一个位置不用重排
 			if (curIndex == brotherCates.size()) {
+				LOG.info("后退位置不变");
 				return;
 			}
 
@@ -143,7 +149,7 @@ public class ReportCateServiceImpl implements ReportCateService {
 			}
 		}
 
-		if(changeSortCates.size()>1){
+		if(changeSortCates.size()>0){
 			Integer result = reportCateDao.batchUpdateCate(changeSortCates);
 			LOG.info("更新行数：result:{} size:{}", result,changeSortCates.size());
 		}

@@ -132,13 +132,22 @@ public class ReportCateController {
 		//添加
 		try {
 			ReportCate cate = reportCateService.getCate(cateId);
-			if(cate==null){
-				throw new ErrorException("没有获取到分类，cateId:{}",cateId);
+			if (cate == null) {
+				throw new ErrorException("没有获取到分类，cateId:{}", cateId);
 			}
 
-			if(cate.getParentId()==parentId){
+			if (cate.getParentId() == parentId) {
 				return new BaseResult<Object>(true, null);
 			}
+
+
+			cate.setSort(1);
+			List<ReportCate> subCates = reportCateService.getSubCates(parentId);
+			if (subCates != null && subCates.size() > 0) {
+				int max = subCates.stream().mapToInt(i -> i.getSort()).max().getAsInt();
+				cate.setSort(max + 1);
+			}
+
 			cate.setParentId(parentId);
 			reportCateService.updateCate(cate);
 		} catch (Exception ex) {
