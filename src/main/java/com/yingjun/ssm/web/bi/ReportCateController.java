@@ -2,6 +2,7 @@ package com.yingjun.ssm.web.bi;
 
 import com.yingjun.ssm.dto.BaseResult;
 import com.yingjun.ssm.entity.bi.report.ReportCate;
+import com.yingjun.ssm.exception.ErrorException;
 import com.yingjun.ssm.service.bi.report.ReportCateService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,7 @@ public class ReportCateController {
 	public String index(Model model) {
 		LOG.info("invoke----------/reportcate/index");
 		model.addAttribute("reportcate", 1);
-		return "bi/report/_report_cate_tree";
+		return "bi/report/report_manage";
 	}
 
 
@@ -119,6 +120,33 @@ public class ReportCateController {
 		return new BaseResult<Object>(true, null);
 	}
 
+
+	@RequestMapping(value = "/move", method = RequestMethod.POST)
+	public
+	@ResponseBody
+	BaseResult<Object> delete(Model model, int cateId, int parentId) {
+		LOG.info("invoke----------/reportcate/move " +
+						"cateId:{} parentId:{}"
+				, cateId, parentId);
+
+		//添加
+		try {
+			ReportCate cate = reportCateService.getCate(cateId);
+			if(cate==null){
+				throw new ErrorException("没有获取到分类，cateId:{}",cateId);
+			}
+
+			if(cate.getParentId()==parentId){
+				return new BaseResult<Object>(true, null);
+			}
+			cate.setParentId(parentId);
+			reportCateService.updateCate(cate);
+		} catch (Exception ex) {
+			return new BaseResult<Object>(false, "移动失败，" + ex.getMessage());
+		}
+
+		return new BaseResult<Object>(true, null);
+	}
 
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test(Model model) {

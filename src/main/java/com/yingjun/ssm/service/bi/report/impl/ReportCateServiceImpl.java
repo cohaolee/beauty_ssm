@@ -160,6 +160,19 @@ public class ReportCateServiceImpl implements ReportCateService {
 		reportCateDao.delete(cateId);
 	}
 
+	@Override
+	public ReportCate getCate(int cateId) {
+		ReportCate cate = reportCateDao.getCate(cateId);
+		return cate;
+	}
+
+	@Override
+	public void updateCate(ReportCate cate) {
+		cate.setUpdateTime(new Date());
+		reportCateDao.updateCate(cate);
+
+	}
+
 
 	/**
 	 * 获取兄弟分类

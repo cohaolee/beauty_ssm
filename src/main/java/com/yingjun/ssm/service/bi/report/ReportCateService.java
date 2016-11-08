@@ -4,6 +4,9 @@ import com.yingjun.ssm.entity.bi.report.ReportCate;
 
 import java.util.List;
 
+/**
+ *
+ */
 public interface ReportCateService {
 
 
@@ -28,4 +31,16 @@ public interface ReportCateService {
 	 * @param cateId
 	 */
 	void delete(int cateId);
+
+	/**
+	 * 获取getCate
+	 * @param cateId
+	 */
+	ReportCate getCate(int cateId);
+
+	/**
+	 * 更新
+	 * @param cate
+	 */
+	void updateCate(ReportCate cate);
 }
