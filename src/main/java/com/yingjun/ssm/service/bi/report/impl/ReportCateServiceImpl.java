@@ -24,6 +24,22 @@ public class ReportCateServiceImpl implements ReportCateService {
 		LOG.info("invoke service------------getSubCates id:{}", id);
 
 		List<ReportCate> subCates = reportCateDao.getSubCates(id);
+
+		//确定子类个数
+		if (subCates != null && subCates.size() > 0) {
+			List<ReportCate> childrenCountList = reportCateDao.getChildrenCount(subCates.stream().map(i -> i.getCateId()).collect(Collectors.toList()));
+
+			Map<Integer, Integer> map = childrenCountList.stream().collect(
+					Collectors.toMap(i -> i.getCateId()
+							, i -> i.getChildrenCount()));
+			for (ReportCate item : subCates) {
+				if(map.containsKey(item.getCateId())){
+					item.setChildrenCount(map.get(item.getCateId()));
+				}
+			}
+
+		}
+
 		return subCates;
 	}
 
@@ -38,7 +54,7 @@ public class ReportCateServiceImpl implements ReportCateService {
 		cate.setSort(1);
 
 		//计算排序
-		List<ReportCate> brotherCates =reportCateDao.getSubCates(cate.getParentId());
+		List<ReportCate> brotherCates = reportCateDao.getSubCates(cate.getParentId());
 		if (brotherCates != null && brotherCates.size() > 0) {
 			int max = brotherCates.stream().mapToInt(i -> i.getSort()).max().getAsInt();
 			cate.setSort(max + 1);
@@ -149,9 +165,9 @@ public class ReportCateServiceImpl implements ReportCateService {
 			}
 		}
 
-		if(changeSortCates.size()>0){
+		if (changeSortCates.size() > 0) {
 			Integer result = reportCateDao.batchUpdateCate(changeSortCates);
-			LOG.info("更新行数：result:{} size:{}", result,changeSortCates.size());
+			LOG.info("更新行数：result:{} size:{}", result, changeSortCates.size());
 		}
 
 	}
@@ -159,7 +175,7 @@ public class ReportCateServiceImpl implements ReportCateService {
 	@Override
 	public void delete(int cateId) {
 		List<ReportCate> subCates = reportCateDao.getSubCates(cateId);
-		if(subCates.size()>0){
+		if (subCates.size() > 0) {
 			throw new ErrorException("该分类下面有子分类，不能删除");
 		}
 

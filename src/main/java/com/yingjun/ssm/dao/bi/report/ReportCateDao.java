@@ -65,4 +65,13 @@ public interface ReportCateDao {
 	 * @return
 	 */
 	Integer delete(int cateId);
+
+
+	/**
+	 * 获取各个节点的子节点数
+	 *
+	 * @param ids 要查询的id列表
+	 * @return
+	 */
+	List<ReportCate> getChildrenCount(List<Integer> ids);
 }

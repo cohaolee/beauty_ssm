@@ -71,6 +71,10 @@
                                 if (ev.data && ev.data.length > 0) {
                                     for (var i = 0; i < ev.data.length; i++) {
                                         ev.data[i].leaf = false;
+                                        if(ev.data[i].childrenCount==0){
+                                            ev.data[i].cls='x-tree-icon x-tree-elbow-leaf';
+                                        }
+
                                     }
                                 }
                             },
@@ -441,6 +445,10 @@
                                         if (ev.data[i].cateId == moveNodeId) {
                                             deleteItemIndex = i;
                                         }
+
+                                        if(ev.data[i].childrenCount==0){
+                                            ev.data[i].cls='x-tree-icon x-tree-elbow-leaf';
+                                        }
                                     }
                                 }
 
@@ -489,7 +497,9 @@
                                             callBackFun();
                                             setTimeout(function () {
                                                 var node = _mainTreeStore.findNode(param.parentId);
-                                                _mainTreeStore.reloadNode(node);
+                                                if(node) {
+                                                    _mainTreeStore.reloadNode(node);
+                                                }
                                                 //_mainTreeStore.load({id: param.parentId});
                                             }, 300);
 
@@ -521,9 +531,7 @@
                         console.log("moveNodeId：" + moveNodeId);
                         dialog.show();
 
-
-                        var rootNode = treeStore.findNode(0);
-                        treeStore.reloadNode(rootNode);
+                        treeStore.reloadNode();
                         //treeStore.load({id: 0}); 该方式不稳定
                     });
 

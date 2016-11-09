@@ -4,6 +4,7 @@ import com.yingjun.ssm.dto.BaseResult;
 import com.yingjun.ssm.entity.bi.report.ReportCate;
 import com.yingjun.ssm.exception.ErrorException;
 import com.yingjun.ssm.service.bi.report.ReportCateService;
+import com.yingjun.ssm.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,10 @@ public class ReportCateController {
 				, cate.getCateId()
 				, cate.getParentId()
 				, commandType);
+
+		if(StrUtils.isNullOrEmpty(cate.getName())){
+			return new BaseResult<Object>(false, "名称不能为空");
+		}
 
 		//添加
 		if (commandType == 1) {
@@ -124,7 +129,7 @@ public class ReportCateController {
 	@RequestMapping(value = "/move", method = RequestMethod.POST)
 	public
 	@ResponseBody
-	BaseResult<Object> delete(Model model, int cateId, int parentId) {
+	BaseResult<Object> move(Model model, int cateId, int parentId) {
 		LOG.info("invoke----------/reportcate/move " +
 						"cateId:{} parentId:{}"
 				, cateId, parentId);

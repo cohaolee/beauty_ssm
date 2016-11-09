@@ -12,7 +12,7 @@ import java.util.Date;
 public class ReportCate {
 	private int cateId;
 	private int parentId;
-	private String	name;
+	private String name;
 	private byte status;
 	private int sort;
 	@JsonFormat(pattern = "yyyy-MM-dd")
@@ -21,7 +21,30 @@ public class ReportCate {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date updateTime;
 
+	//子分类数
+	private int childrenCount;
+
+	//关联关系数
+	private int relationCount;
+
 	//region getter setter
+	public int getChildrenCount() {
+		return childrenCount;
+	}
+
+	public void setChildrenCount(int childrenCount) {
+		this.childrenCount = childrenCount;
+	}
+
+	public int getRelationCount() {
+		return relationCount;
+	}
+
+	public void setRelationCount(int relationCount) {
+		this.relationCount = relationCount;
+	}
+
+
 	public int getCateId() {
 		return cateId;
 	}

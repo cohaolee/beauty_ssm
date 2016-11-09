@@ -76,4 +76,15 @@
         DELETE FROM bi_report_cate WHERE cate_id=#{cateId}
     </select>
 
+	<select id="getChildrenCount" resultType="ReportCate">
+		select
+			parent_id cate_id
+			,count(*) children_count
+		from bi_report_cate where parent_id in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		group by parent_id
+	</select>
+
 </mapper>
