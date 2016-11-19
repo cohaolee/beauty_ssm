@@ -4,10 +4,9 @@ package com.yingjun.ssm.quartz;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.yingjun.ssm.cache.RedisCache;
+import com.inkey.common.cache.RedisCache;
 import com.yingjun.ssm.dao.UserDao;
 
 /**

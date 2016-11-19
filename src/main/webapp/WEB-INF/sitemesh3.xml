@@ -7,6 +7,7 @@
     <!--<mapping path="/*" decorator="/WEB-INF/shared/default-layout.jsp"/>-->
     <mapping path="/user" decorator="/WEB-INF/shared/user-layout.jsp"/>
     <mapping path="/bi/reportcate/*" decorator="/WEB-INF/shared/bui/bui-layout.jsp"/>
+    <mapping path="/bi/report/*" decorator="/WEB-INF/shared/bui/bui-layout.jsp"/>
 
 
     <!-- 排除不需要装饰的路径  -->

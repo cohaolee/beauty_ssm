@@ -1,9 +1,9 @@
 package com.yingjun.ssm.web;
 
-import com.yingjun.ssm.dto.BaseResult;
+import com.inkey.common.dto.BaseResult;
 import com.yingjun.ssm.entity.Goods;
 import com.yingjun.ssm.enums.ResultEnum;
-import com.yingjun.ssm.exception.ErrorException;
+import com.inkey.common.exception.ErrorException;
 import com.yingjun.ssm.service.GoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

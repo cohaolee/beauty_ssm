@@ -16,11 +16,21 @@
 <body>
 
 <div class="main-container" id="cpcontainer">
-    <jsp:include page="_report_cate_tree.jsp">
-        <jsp:param name="pageTitle" value="参数传递"/>
-    </jsp:include>
+    <div id="wapper">
+        <table style="font: inherit">
+            <tr>
+                <td style="vertical-align:top">
+                    <jsp:include page="_report_cate_tree.jsp">
+                        <jsp:param name="pageTitle" value="参数传递"/>
+                    </jsp:include>
+                </td>
+                <td width="90%" style="vertical-align:top">
+                    <jsp:include page="_report_list.jsp"></jsp:include>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
-
 </body>
 
 </html>

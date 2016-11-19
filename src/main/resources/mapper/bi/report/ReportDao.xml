@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inkey.bi.dao.report.ReportDao">
+
+    <!--查询实体-->
+    <select id="get" resultType="Report">
+		SELECT 
+            report_id
+           ,cate_id
+           ,name
+           ,status
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_report
+        WHERE report_id = #{reportId}
+	</select>
+
+    <!--添加-->
+    <select id="add" parameterType="Report">
+		INSERT INTO bi_report (
+            report_id
+           ,cate_id
+           ,name
+           ,status
+           ,create_time
+           ,update_time
+           ,remark 
+		) VALUES (
+            #{reportId}
+           ,#{cateId}
+           ,#{name}
+           ,#{status}
+           ,#{createTime}
+           ,#{updateTime}
+           ,#{remark}
+		)
+	</select>
+
+    <!--更新-->
+    <select id="update" resultType="Integer" parameterType="Report">
+		UPDATE  bi_report SET 
+            cate_id = #{cateId}
+           ,name = #{name}
+           ,status = #{status}
+           ,create_time = #{createTime}
+           ,update_time = #{updateTime}
+           ,remark = #{remark}
+        WHERE report_id = #{reportId}
+	</select>
+    
+    <!--删除-->
+    <select id="delete" resultType="Integer" >
+        DELETE FROM bi_report WHERE report_id=#{reportId}
+    </select>
+    
+    <!--分页-->
+    <select id="getPage" resultType="Report" >
+        SELECT 
+            report_id
+           ,cate_id
+           ,name
+           ,status
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_report 
+        LIMIT #{pageIndex},#{pageSize}
+    </select>    
+    
+    <!--列表-->
+    <select id="getList" resultType="Report" >
+        SELECT 
+            report_id
+           ,cate_id
+           ,name
+           ,status
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_report 
+    </select> 
+    
+    <!--批量更新-->
+    <select id="batchUpdate" resultType="Integer" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+          update bi_report
+            <set>
+            cate_id = #{item.cateId}
+           ,name = #{item.name}
+           ,status = #{item.status}
+           ,create_time = #{item.createTime}
+           ,update_time = #{item.updateTime}
+           ,remark = #{item.remark}
+            </set>
+          where report_id = #{reportId}
+        </foreach>
+    </select>
+    
+    <!--列表-->
+    <select id="count" resultType="Integer" >
+        SELECT 
+            count(*) 
+        FROM bi_report 
+    </select> 
+</mapper>
+
+
+

@@ -1,13 +1,13 @@
 package com.yingjun.ssm.service.impl;
 
-import com.yingjun.ssm.cache.RedisCache;
+import com.inkey.common.cache.RedisCache;
 import com.yingjun.ssm.dao.GoodsDao;
 import com.yingjun.ssm.dao.OrderDao;
 import com.yingjun.ssm.dao.UserDao;
 import com.yingjun.ssm.entity.Goods;
 import com.yingjun.ssm.entity.User;
 import com.yingjun.ssm.enums.ResultEnum;
-import com.yingjun.ssm.exception.ErrorException;
+import com.inkey.common.exception.ErrorException;
 import com.yingjun.ssm.service.GoodsService;
 import org.apache.commons.collections.MapUtils;
 import org.slf4j.Logger;

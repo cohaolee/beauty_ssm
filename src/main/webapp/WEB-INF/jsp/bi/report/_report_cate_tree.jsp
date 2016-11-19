@@ -13,8 +13,10 @@
 <div class="span8">
     <div class="panel panel-head-borded panel-small">
         <div class="panel-header clearfix">
-            <h3 class="pull-left">分类</h3>
+            <h3 class="pull-left"></h3>
             <div class="pull-right">
+                <button class="button button-small" id="btnNodeRefresh" title="刷新"><i class="icon-refresh"></i>
+                </button>
                 <button class="button button-small" id="btnNodeForward" title="排序前进"><i class="icon-chevron-up"></i>
                 </button>
                 <button class="button button-small" id="btnNodeBack" title="排序后退"><i class="icon-chevron-down"></i>
@@ -52,7 +54,7 @@
                     var treeStore = new Data.TreeStore({
                         root: {
                             id: 0,
-                            text: '全部',
+                            text: '报表分类',
                             cls: 'icon-home',
                         },
                         pidField: 'parentId',
@@ -150,6 +152,10 @@
 
 
                     //触发事件====================
+                    $("#btnNodeRefresh").click(function () {
+                        treeStore.reloadNode(tree.getSelected());
+                    });
+
                     $("#btnNodeAdd").click(function () {
                         var node = tree.getSelected();
                         if (!node || node.cateId == -1) {
@@ -496,6 +502,7 @@
                                         if (data && data.success) {
                                             callBackFun();
                                             setTimeout(function () {
+                                                if(!_mainTreeStore){return true;}
                                                 var node = _mainTreeStore.findNode(param.parentId);
                                                 if(node) {
                                                     _mainTreeStore.reloadNode(node);
