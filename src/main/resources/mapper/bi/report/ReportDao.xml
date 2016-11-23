@@ -6,65 +6,69 @@
     <select id="get" resultType="Report">
 		SELECT 
             report_id
-           ,cate_id
-           ,name
-           ,status
-           ,create_time
-           ,update_time
-           ,remark 
-        FROM bi_report
+           ,a.cate_id
+           ,a.name
+           ,a.status
+           ,a.create_time
+           ,a.update_time
+           ,a.remark
+           ,b.name cate_name
+        FROM bi_report a
+          LEFT JOIN bi_report_cate b on a.cate_id=b.cate_id
         WHERE report_id = #{reportId}
 	</select>
 
     <!--添加-->
-    <select id="add" parameterType="Report">
+    <insert id="add" parameterType="Report" useGeneratedKeys="true" keyProperty="reportId">
 		INSERT INTO bi_report (
-            report_id
-           ,cate_id
+            cate_id
            ,name
            ,status
            ,create_time
            ,update_time
            ,remark 
 		) VALUES (
-            #{reportId}
-           ,#{cateId}
+            #{cateId}
            ,#{name}
            ,#{status}
            ,#{createTime}
            ,#{updateTime}
            ,#{remark}
-		)
-	</select>
+		);
+	</insert>
 
     <!--更新-->
-    <select id="update" resultType="Integer" parameterType="Report">
+    <update id="update" parameterType="Report">
 		UPDATE  bi_report SET 
             cate_id = #{cateId}
            ,name = #{name}
            ,status = #{status}
-           ,create_time = #{createTime}
            ,update_time = #{updateTime}
            ,remark = #{remark}
         WHERE report_id = #{reportId}
-	</select>
+	</update>
     
     <!--删除-->
-    <select id="delete" resultType="Integer" >
+    <delete id="delete">
         DELETE FROM bi_report WHERE report_id=#{reportId}
-    </select>
+    </delete>
     
     <!--分页-->
     <select id="getPage" resultType="Report" >
         SELECT 
             report_id
-           ,cate_id
-           ,name
-           ,status
-           ,create_time
-           ,update_time
-           ,remark 
-        FROM bi_report 
+           ,a.cate_id
+           ,a.name
+           ,a.status
+           ,a.create_time
+           ,a.update_time
+           ,a.remark
+           ,b.name cate_name
+        FROM bi_report a
+          LEFT JOIN bi_report_cate b on a.cate_id=b.cate_id
+          <if test="cateId > 0">
+              WHERE a.cate_id = #{cateId}
+          </if>
         LIMIT #{pageIndex},#{pageSize}
     </select>    
     
@@ -72,30 +76,31 @@
     <select id="getList" resultType="Report" >
         SELECT 
             report_id
-           ,cate_id
-           ,name
-           ,status
-           ,create_time
-           ,update_time
-           ,remark 
-        FROM bi_report 
+           ,a.cate_id
+           ,a.name
+           ,a.status
+           ,a.create_time
+           ,a.update_time
+           ,a.remark
+           ,b.name cate_name
+        FROM bi_report a
+          LEFT JOIN bi_report_cate b on a.cate_id=b.cate_id
     </select> 
     
     <!--批量更新-->
-    <select id="batchUpdate" resultType="Integer" parameterType="java.util.List">
+    <update id="batchUpdate" parameterType="java.util.List">
         <foreach collection="list" item="item" index="index" open="" close="" separator=";">
           update bi_report
             <set>
             cate_id = #{item.cateId}
            ,name = #{item.name}
            ,status = #{item.status}
-           ,create_time = #{item.createTime}
            ,update_time = #{item.updateTime}
            ,remark = #{item.remark}
             </set>
           where report_id = #{reportId}
         </foreach>
-    </select>
+    </update>
     
     <!--列表-->
     <select id="count" resultType="Integer" >

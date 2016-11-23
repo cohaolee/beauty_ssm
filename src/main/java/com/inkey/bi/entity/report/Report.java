@@ -1,6 +1,7 @@
 package com.inkey.bi.entity.report;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 
@@ -30,18 +31,24 @@ public class Report
 	/**
 	 * 创建时间
 	 */
+	@JsonFormat(pattern = "yyyy-MM-dd")
     private Date createTime;
     
 	/**
 	 * 更新时间
 	 */
+	@JsonFormat(pattern = "yyyy-MM-dd")
     private Date updateTime;
     
 	/**
 	 * 
 	 */
     private String remark;
-    
+
+	/**
+	 * 分类名称
+	 */
+	private String cateName;
 
 
     //region getter setter
@@ -107,7 +114,14 @@ public class Report
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
- 
+
+	public String getCateName() {
+		return cateName;
+	}
+
+	public void setCateName(String cateName) {
+		this.cateName = cateName;
+	}
     //endregion
 
 }

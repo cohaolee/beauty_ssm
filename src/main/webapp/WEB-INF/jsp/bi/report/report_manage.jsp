@@ -11,6 +11,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>报表管理</title>
+    <style>
+        table{font:inherit;}
+    </style>
 </head>
 
 <body>
@@ -31,7 +34,9 @@
         </table>
     </div>
 </div>
-</body>
 
+<jsp:include page="_report_add_edit.jsp"></jsp:include>
+
+</body>
 </html>
 

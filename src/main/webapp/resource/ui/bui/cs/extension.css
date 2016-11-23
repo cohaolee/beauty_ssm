@@ -86,3 +86,14 @@ th.bui-grid-hd-empty, td.bui-grid-cell-empty {
 .x-datepicker-arrow .icon{
     margin-top: 7px;
 }
+
+/*信息提示框*/
+.bui-message{
+    z-index: 9999;
+}
+
+.bui-message .bui-message-content{
+    max-width: 600px;
+    max-height: 600px;
+    overflow: auto;
+}

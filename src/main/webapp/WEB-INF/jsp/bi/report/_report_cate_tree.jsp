@@ -73,8 +73,8 @@
                                 if (ev.data && ev.data.length > 0) {
                                     for (var i = 0; i < ev.data.length; i++) {
                                         ev.data[i].leaf = false;
-                                        if(ev.data[i].childrenCount==0){
-                                            ev.data[i].cls='x-tree-icon x-tree-elbow-leaf';
+                                        if (ev.data[i].childrenCount == 0) {
+                                            ev.data[i].cls = 'x-tree-icon x-tree-elbow-leaf';
                                         }
 
                                     }
@@ -88,7 +88,7 @@
                                     setTimeout(function () {
                                         var node = tree.findNode(curSelectedNodeId);
                                         //移动时，节点有可能移动到未加载的节点上
-                                        if(node) {
+                                        if (node) {
                                             tree.setSelected(node);
                                             needSelected = false;
                                             console.log('load->selected')
@@ -121,9 +121,11 @@
 
                                 console.log('curSelectedNodeId ' + curSelectedNodeId);
                             },
+                            itemclick: function (ev) {
+                                $('body').trigger('treeNodeClick', ev.item.record);
+                            }
                         },
                     }).render();
-
 
 //                    tree.on('itemclick', function (ev) {
 //                        var item = ev.item;
@@ -452,8 +454,8 @@
                                             deleteItemIndex = i;
                                         }
 
-                                        if(ev.data[i].childrenCount==0){
-                                            ev.data[i].cls='x-tree-icon x-tree-elbow-leaf';
+                                        if (ev.data[i].childrenCount == 0) {
+                                            ev.data[i].cls = 'x-tree-icon x-tree-elbow-leaf';
                                         }
                                     }
                                 }
@@ -502,9 +504,11 @@
                                         if (data && data.success) {
                                             callBackFun();
                                             setTimeout(function () {
-                                                if(!_mainTreeStore){return true;}
+                                                if (!_mainTreeStore) {
+                                                    return true;
+                                                }
                                                 var node = _mainTreeStore.findNode(param.parentId);
-                                                if(node) {
+                                                if (node) {
                                                     _mainTreeStore.reloadNode(node);
                                                 }
                                                 //_mainTreeStore.load({id: param.parentId});

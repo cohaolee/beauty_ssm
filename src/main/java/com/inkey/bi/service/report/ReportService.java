@@ -30,7 +30,7 @@ public interface ReportService
      /**
 	 * 获取分页
 	 */
-    PagedList<Report> getPage(int pageIndex, int pageSize);
+    PagedList<Report> getPage(int pageIndex, int pageSize, int cateId);
 
      /**
 	 * 获取列表

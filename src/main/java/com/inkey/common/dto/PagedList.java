@@ -1,5 +1,7 @@
 package com.inkey.common.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
  *
  * @param <T>
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PagedList<T> extends AbstractList<T> {
 	/**
 	 * 当前页数
