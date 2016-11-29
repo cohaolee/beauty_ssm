@@ -14,8 +14,10 @@
     //配置
     String listenRefreshEvent = "treeNodeClick";
     String triggerAddEditEvent = "reportAddEditEvent";
+    String triggerMoveEvent = "reportMoveEvent";
     String listUrl = path + "/bi/report/list";
-
+    String deleteUrl = path + "/bi/report/delete";
+    String moveUrl = path + "/bi/report/move";
 %>
 
 <%--树形左栏--%>
@@ -24,9 +26,9 @@
         <div class="panel-header clearfix">
             <h3 id="gridPanelHeader" class="pull-left">报表</h3>
             <div class="pull-right">
-                <input id="txtSearchReportName" type="text" class="control-text"
+                <input id="txtSearchName" type="text" class="control-text"
                        style="height:25px;width:200px;" title="输入名称">
-                <button class="button" id="btnSearchJobName" title="在全部中Like搜索">
+                <button class="button" id="btnSearchName" title="在全部中Like搜索">
                     <i class="icon-search"></i>
                 </button>
                 <button class="button" id="btnListRefresh" title="刷新列表">
@@ -34,6 +36,9 @@
                 </button>
                 <button class="button" id="btnAddReport" title="添加报表">
                     <i class="icon-plus-sign"></i>
+                </button>
+                <button class="button" id="btnReportMove" title="移动报表到指定分类">
+                    <i class="icon-move"></i>
                 </button>
             </div>
         </div>
@@ -91,14 +96,14 @@
                     autoLoad: true,
                     params: {
                         cateId: -1,
-                        pageSize: 2,
+                        pageSize: 20,
                         pageIndex: 0,
                     },
-                    pageSize: 2,
+                    pageSize: 20,
                     autoSync: true,
 
-                    root : 'data',               //存放数据的字段名(rows)
-                    totalProperty : 'total' ,    //存放记录总数的字段名(results)
+                    root: 'data',               //存放数据的字段名(rows)
+                    totalProperty: 'total',    //存放记录总数的字段名(results)
 
                     listeners: {
                         load: function () {
@@ -108,8 +113,8 @@
                             //loadMask.hide();
                         },
                         //发生在，beforeload和load中间，数据已经获取完成，但是还未触发load事件，用于获取返回的原始数据
-                        beforeprocessload:function(ev){
-                            if(ev.data && !ev.data.success){
+                        beforeprocessload: function (ev) {
+                            if (ev.data && !ev.data.success) {
                                 BUI.Message.Alert("获取数据错误，" + ev.data.error, "error");
                                 return false;
                             }
@@ -136,12 +141,6 @@
                 }
 
                 //事件注册======================================================================
-                $("#btnAddReport").click(function () {
-                    var item = {};
-                    item.cateId = curCateId;
-                    item.cateName = curCateName;
-                    $("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
-                });
 
                 grid.on('cellclick', function (ev) {
                     var item = ev.record;
@@ -149,11 +148,30 @@
                     if (sender.hasClass('btn-edit')) {
                         $("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
                         return false;
-                    } else if (sender.hasClass('btn-param')) {
-                        $("body").trigger("itemConfigParamClicked", [item, successFun]);
+                    } else if (sender.hasClass('btn-delete')) {
+                        BUI.Message.Confirm('确认删除？（将删除所有的依赖数据记录）', function () {
+                            $.post('<%=deleteUrl%>'
+                                    , {reportId: item.reportId}
+                                    , function (data) {
+                                        loadMask.hide();
+                                        if (data && data.success) {
+                                            store.load();
+                                        } else {
+                                            if (data.error != '') {
+                                                BUI.Message.Alert(data.error, 'error');
+                                            }
+                                        }
+                                    }, 'json')
+                                    .error(function (jqXHR, textStatus, responseText) {
+                                        loadMask.hide();
+                                        BUI.Message.Alert("网络错误，" + jqXHR.status, "error");
+                                    });
+                        }, 'question');
+
                         return false;
                     }
                 });
+
 
                 $("#btnListRefresh").click(function () {
                     loadMask.show();
@@ -164,10 +182,80 @@
                     var item = {}
                     item.cateId = curCateId;
                     item.cateName = curCateName;
-                    console.log("_report_list btnAddReport");
-                    console.log(item);
                     $("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
                 })
+
+                $("#btnListRefresh").click(function () {
+                    loadMask.show();
+                    store.load();
+                })
+
+                $("#btnSearchName").click(function () {
+                    var nameLike = $("#txtSearchName").val();
+                    if (nameLike == '') {
+                        BUI.Message.Alert("请输入报表名称", "error");
+                        return;
+                    }
+                    $('#gridPanelHeader').html('全部分类');
+                    loadMask.show();
+                    store.load({nameLike: nameLike, start: 0, pageIndex: 0, cateId: -1});
+                })
+
+
+                //移动
+                $("#btnReportMove").click(function () {
+                    var selections = grid.getSelection();
+                    if (!selections || selections.length <= 0) {
+                        BUI.Message.Alert("请选择需移动的项", "warning");
+                        return;
+                    }
+
+                    $("body").trigger("<%= triggerMoveEvent %>"
+                            , [
+                                function (moveToCateId) {
+                                    var selections = grid.getSelection();
+                                    if (!selections || selections.length <= 0) {
+                                        BUI.Message.Alert("没有获取到已选择的报表", "warning");
+                                        return;
+                                    }
+
+                                    if (moveToCateId == 0) {
+                                        BUI.Message.Alert("没有获取到分类数据", "warning");
+                                        return;
+                                    }
+
+                                    loadMask.show();
+
+                                    var ids = [];
+                                    for (var i = 0; i < selections.length; i++) {
+                                        ids.push(selections[i].reportId);
+                                    }
+
+                                    var param = {};
+                                    param.cateId = moveToCateId;
+                                    param.ids = ids;
+
+                                    $.post('<%=moveUrl%>'
+                                            , param
+                                            , function (data) {
+                                                loadMask.hide();
+                                                if (data && data.success) {
+                                                    store.load();
+                                                } else if (data.error && data.error != '') {
+                                                    BUI.Message.Alert(data.error, 'error');
+                                                    return false;
+                                                }
+                                            }, 'json')
+                                            .error(function (jqXHR, textStatus, responseText) {
+                                                loadMask.hide();
+                                                BUI.Message.Alert("网络错误，" + jqXHR.status + "，" + textStatus, "error");
+                                                return false;
+                                            });
+
+                                }
+                            ]);
+                })
+
 
                 //刷新
                 $("body").bind("<%= listenRefreshEvent %>", function (event, item) {
@@ -175,99 +263,14 @@
                     curCateId = item.cateId;
                     curCateName = item.name;
                     $('#gridPanelHeader').html('当前：' + curCateName);
-                    $("#txtSearchReportName").val('');
-                    store.load({cateId: curCateId, pageIndex:0 });
+                    $("#txtSearchName").val('');
+                    store.load({cateId: curCateId, pageIndex: 0});
                 });
 
-
-                //工具栏相关======================================================================
-                function search() {
-                    var jobNameLike = $("#txtSearchJobName").val();
-                    $('#gridPanelHeader').html('全部分类');
-                    //if (jobNameLike == '') {
-                    //    BUI.Message.Alert("请输入作业名", "error");
-                    //    return;
-                    //}
-
-                    loadMask.show();
-                    store.load({jobNameLike: jobNameLike, start: 0, pageIndex: 0, cateId: -1});
-                }
-
-             /*   function allChangeStatus(fromStatus, toStatus) {
-                    loadMask.show();
-                    $.post('@Url.Action("ChangeAllJobStatus")'
-                            , {fromStatus: fromStatus, toStatus: toStatus}
-                            , function (data) {
-                                loadMask.hide();
-                                if (data && data.success) {
-                                    store.load();
-                                } else {
-                                    if (data.error != '') {
-                                        BUI.Message.Alert(data.error, 'error');
-                                    }
-                                }
-                            }, 'json').error(function (jqXHR, textStatus, responseText) {
-                        loadMask.hide();
-                        BUI.Message.Alert("网络错误，" + jqXHR.status, "error");
-                    });
-                }
-
-                $('#btnSearchJobName').click(function () {
-                    search();
-                })
-
-                $('#txtSearchJobName').keydown(function (e) {
-                    if (e.keyCode == 13) {
-                        search();
-                    }
-                });
-
-                $('#btnEnableAllPause').click(function () {
-                    BUI.Message.Confirm('确认将所有暂停状态的作业启用吗？', function () {
-                        allChangeStatus('@((byte)JobStatus.Pause)', '@((byte)JobStatus.Enable)');
-                    }, 'question');
-                });
-
-                $('#btnPauseAllEnable').click(function () {
-                    BUI.Message.Confirm('确认将所有启用状态的作业暂停吗？', function () {
-                        allChangeStatus('@((byte)JobStatus.Enable)', '@((byte)JobStatus.Pause)');
-                    }, 'question');
-                });
-
-
-                $('#btnBatchEnable').click(function () {
-                    var selections = grid.getSelection();
-                    if (!selections || selections.length <= 0) {
-                        BUI.Message.Alert("请选择需启动的项", "warning");
-                        return;
-                    }
-
-                    var jodIds = [];
-                    for (var i = 0; i < selections.length; i++) {
-                        jodIds.push(selections[i].jobId);
-                    }
-
-                    BUI.Message.Confirm('确认批量启动么？', function () {
-                        changeStatus(jodIds, '@((byte)JobStatus.Enable)');
-                    }, 'question');
-                });
-
-                $('#btnBatchStop').click(function () {
-                    var selections = grid.getSelection();
-                    if (!selections || selections.length <= 0) {
-                        BUI.Message.Alert("请选择需停止的项", "warning");
-                        return;
-                    }
-
-                    var jodIds = [];
-                    for (var i = 0; i < selections.length; i++) {
-                        jodIds.push(selections[i].jobId);
-                    }
-
-                    BUI.Message.Confirm('确认批量停止么？', function () {
-                        changeStatus(jodIds, '@((byte)JobStatus.Disable)');
-                    }, 'question');
-                });*/
             });
 
 </script>
+
+<jsp:include page="_report_cate_tree_node_select.jsp">
+    <jsp:param name="divCode" value="<%=(int)(Math.random()*1000)%>"/>
+</jsp:include>

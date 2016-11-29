@@ -18,6 +18,8 @@
 
 <body>
 
+
+
 <div class="main-container" id="cpcontainer">
     <div id="wapper">
         <table style="font: inherit">
@@ -36,7 +38,10 @@
 </div>
 
 <jsp:include page="_report_add_edit.jsp"></jsp:include>
-
+<script>
+    $(".nav li").removeClass("active");
+    $(".nav li.nav-report").addClass("active");
+</script>
 </body>
 </html>
 

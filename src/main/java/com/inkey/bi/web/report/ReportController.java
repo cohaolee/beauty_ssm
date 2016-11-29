@@ -14,8 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -36,9 +38,9 @@ public class ReportController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public
 	@ResponseBody
-	BaseResult<Object> list(Model model, int pageIndex, int pageSize, int cateId) {
+	BaseResult<Object> list(Model model, int pageIndex, int pageSize, int cateId, String nameLike) {
 		LOG.info("invoke----------/report/list");
-		PagedList<Report> page = reportService.getPage(pageIndex, pageSize, cateId);
+		PagedList<Report> page = reportService.getPage(pageIndex, pageSize, cateId, nameLike);
 		return new BaseResult<Object>(true, page, page.getTotalCount());
 
 		//return new BaseResult<Object>(false, "错误。。。");
@@ -72,5 +74,36 @@ public class ReportController {
 		return new BaseResult<Object>(true, null);
 	}
 
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public
+	@ResponseBody
+	BaseResult<Object> delete(Model model, int reportId) {
+		LOG.info("invoke----------/report/delete");
 
+		if (reportId <= 0) {
+			return new BaseResult<Object>(false, "没有选择要删除的报表");
+		}
+
+		reportService.delete(reportId);
+
+		return new BaseResult<Object>(true, null);
+	}
+
+
+	@RequestMapping(value = "/move", method = RequestMethod.POST)
+	public
+	@ResponseBody
+	BaseResult<Object> move(Model model, int cateId, @RequestParam("ids[]") List<Integer> ids) {
+		LOG.info("invoke----------/report/move cateId:{} ids:{}", cateId, Arrays.toString(ids.stream().toArray()));
+		if (cateId <= 0) {
+			return new BaseResult<Object>(false, "请选择分类");
+		}
+
+		if (ids.size() <= 0) {
+			return new BaseResult<Object>(false, "请选择移动的报表");
+		}
+
+		reportService.move(cateId, ids);
+		return new BaseResult<Object>(true, null);
+	}
 }

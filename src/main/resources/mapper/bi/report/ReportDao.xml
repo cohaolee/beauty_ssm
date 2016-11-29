@@ -47,33 +47,37 @@
            ,remark = #{remark}
         WHERE report_id = #{reportId}
 	</update>
-    
+
     <!--删除-->
     <delete id="delete">
         DELETE FROM bi_report WHERE report_id=#{reportId}
     </delete>
-    
+
     <!--分页-->
-    <select id="getPage" resultType="Report" >
-        SELECT 
+    <select id="getPage" resultType="Report">
+        SELECT
             report_id
-           ,a.cate_id
-           ,a.name
-           ,a.status
-           ,a.create_time
-           ,a.update_time
-           ,a.remark
-           ,b.name cate_name
+            ,a.cate_id
+            ,a.name
+            ,a.status
+            ,a.create_time
+            ,a.update_time
+            ,a.remark
+            ,b.name cate_name
         FROM bi_report a
-          LEFT JOIN bi_report_cate b on a.cate_id=b.cate_id
-          <if test="cateId > 0">
-              WHERE a.cate_id = #{cateId}
-          </if>
+        LEFT JOIN bi_report_cate b on a.cate_id=b.cate_id
+        WHERE 1=1
+        <if test="cateId > 0">
+            AND a.cate_id = #{cateId}
+        </if>
+        <if test="nameLike != null">
+            AND a.name like CONCAT('%',#{nameLike},'%')
+        </if>
         LIMIT #{pageIndex},#{pageSize}
-    </select>    
-    
+    </select>
+
     <!--列表-->
-    <select id="getList" resultType="Report" >
+    <select id="getList" resultType="Report">
         SELECT 
             report_id
            ,a.cate_id
@@ -85,29 +89,48 @@
            ,b.name cate_name
         FROM bi_report a
           LEFT JOIN bi_report_cate b on a.cate_id=b.cate_id
-    </select> 
-    
+    </select>
+
     <!--批量更新-->
     <update id="batchUpdate" parameterType="java.util.List">
         <foreach collection="list" item="item" index="index" open="" close="" separator=";">
-          update bi_report
+            update bi_report
             <set>
-            cate_id = #{item.cateId}
-           ,name = #{item.name}
-           ,status = #{item.status}
-           ,update_time = #{item.updateTime}
-           ,remark = #{item.remark}
+                cate_id = #{item.cateId}
+                ,name = #{item.name}
+                ,status = #{item.status}
+                ,update_time = #{item.updateTime}
+                ,remark = #{item.remark}
             </set>
-          where report_id = #{reportId}
+            where report_id = #{item.reportId}
         </foreach>
     </update>
-    
-    <!--列表-->
-    <select id="count" resultType="Integer" >
+
+    <!--合计-->
+    <select id="count" resultType="Integer">
         SELECT 
             count(*) 
         FROM bi_report 
-    </select> 
+    </select>
+
+
+    <!--列表-->
+    <select id="getListByIds" resultType="Report">
+        SELECT
+        report_id
+        ,a.cate_id
+        ,a.name
+        ,a.status
+        ,a.create_time
+        ,a.update_time
+        ,a.remark
+        FROM bi_report a
+        WHERE report_id in
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+
+    </select>
 </mapper>
 
 

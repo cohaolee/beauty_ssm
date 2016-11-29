@@ -522,7 +522,7 @@
                                     }, 'json')
                                     .error(function (jqXHR, textStatus, responseText) {
                                         loadMask.hide();
-                                        BUI.Message.Alert("网络错误，" + jqXHR.status, "error");
+                                        BUI.Message.Alert("网络错误，" + jqXHR.status + "，" + textStatus, "error");
                                         return false;
                                     });
 

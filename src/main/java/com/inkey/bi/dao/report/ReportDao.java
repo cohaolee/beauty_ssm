@@ -38,7 +38,10 @@ public interface ReportDao {
 	 * @param cateId    分类Id
 	 * @return
 	 */
-	List<Report> getPage(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize, @Param("cateId") int cateId);
+	List<Report> getPage(@Param("pageIndex") int pageIndex
+			, @Param("pageSize") int pageSize
+			, @Param("cateId") int cateId
+			, @Param("nameLike") String nameLike);
 
 	/**
 	 * 获取列表
@@ -48,12 +51,18 @@ public interface ReportDao {
 	/**
 	 * 批量更新
 	 */
-	void batchUpdate(List<Report> entities);
+	int batchUpdate(List<Report> entities);
 
 	/**
 	 * 统计条数
 	 */
 	int count();
+
+	/**
+	 * 更加Ids获取列表
+	 * @param ids
+	 */
+	List<Report> getListByIds(List<Integer> ids);
 	//endregion
 
 }

@@ -30,13 +30,20 @@ public interface ReportService
      /**
 	 * 获取分页
 	 */
-    PagedList<Report> getPage(int pageIndex, int pageSize, int cateId);
+    PagedList<Report> getPage(int pageIndex, int pageSize, int cateId, String nameLike);
 
      /**
 	 * 获取列表
 	 */
     List<Report> getList();
-    //endregion    
+
+	/**
+	 * 移动报表到分类
+	 * @param cateId
+	 * @param ids 移动的报表列表
+	 */
+	void move(int cateId, List<Integer> ids);
+	//endregion
 
 }
 

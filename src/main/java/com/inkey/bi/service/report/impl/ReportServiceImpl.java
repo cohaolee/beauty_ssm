@@ -70,8 +70,8 @@ public class ReportServiceImpl implements ReportService {
 	 * 获取分页
 	 */
 	@Override
-	public PagedList<Report> getPage(int pageIndex, int pageSize, int cateId) {
-		List<Report> list = dao.getPage(pageIndex * pageSize, pageSize, cateId);
+	public PagedList<Report> getPage(int pageIndex, int pageSize, int cateId, String nameLike) {
+		List<Report> list = dao.getPage(pageIndex * pageSize, pageSize, cateId, nameLike);
 		return new PagedList<Report>(list, pageIndex, pageSize, dao.count());
 	}
 
@@ -81,6 +81,24 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public List<Report> getList() {
 		return dao.getList();
+	}
+
+	@Override
+	public void move(int cateId, List<Integer> ids) {
+		List<Report> list = dao.getListByIds(ids);
+		ArrayList<Report> moves = new ArrayList<>();
+		for (Report item :
+				list) {
+			if (item.getCateId() != cateId) {
+				item.setUpdateTime(new Date());
+				item.setCateId(cateId);
+				moves.add(item);
+			}
+		}
+
+		if (moves.size() == 0) {
+			return;
+		}
 	}
 	//endregion
 
