@@ -49,7 +49,7 @@
         <property name="mapperLocations">
             <list>
                 <value>classpath:mapper/*.xml</value>
-                <value>classpath:mapper/bi/report/*.xml</value>
+                <value>classpath:mapper/bi/*/*.xml</value>
             </list>
         </property>
 

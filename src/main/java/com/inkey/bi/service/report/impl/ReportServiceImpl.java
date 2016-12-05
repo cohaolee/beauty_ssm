@@ -99,6 +99,8 @@ public class ReportServiceImpl implements ReportService {
 		if (moves.size() == 0) {
 			return;
 		}
+
+		dao.batchUpdate(moves);
 	}
 	//endregion
 

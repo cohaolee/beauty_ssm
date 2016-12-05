@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inkey.bi.dao.sql.SqlParamConfigDao">
+
+    <!--查询实体-->
+    <select id="get" resultType="SqlParamConfig">
+		SELECT 
+            param_id
+           ,report_id
+           ,param_code
+           ,param_name
+           ,default_value
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_sql_param_config
+        WHERE param_id = #{paramId}
+	</select>
+
+    <!--添加-->
+    <insert id="add" parameterType="SqlParamConfig" useGeneratedKeys="true" keyProperty="paramId">
+		INSERT INTO bi_sql_param_config (
+            report_id
+           ,param_code
+           ,param_name
+           ,default_value
+           ,create_time
+           ,update_time
+           ,remark 
+		) VALUES (
+            #{reportId}
+           ,#{paramCode}
+           ,#{paramName}
+           ,#{defaultValue}
+           ,#{createTime}
+           ,#{updateTime}
+           ,#{remark}
+
+		)
+	</insert>
+
+    <!--更新-->
+    <update id="update" parameterType="SqlParamConfig">
+		UPDATE  bi_sql_param_config SET 
+            report_id = #{reportId}
+           ,param_code = #{paramCode}
+           ,param_name = #{paramName}
+           ,default_value = #{defaultValue}
+           ,update_time = #{updateTime}
+           ,remark = #{remark}
+        WHERE param_id = #{paramId}
+	</update>
+    
+    <!--删除-->
+    <delete id="delete">
+        DELETE FROM bi_sql_param_config WHERE param_id=#{paramId}
+    </delete>
+    
+    <!--分页-->
+    <select id="getPage" resultType="SqlParamConfig" >
+        SELECT 
+            param_id
+           ,report_id
+           ,param_code
+           ,param_name
+           ,default_value
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_sql_param_config 
+        LIMIT #{pageStart},#{pageSize}
+    </select>    
+    
+    <!--列表-->
+    <select id="getList" resultType="SqlParamConfig" >
+        SELECT 
+            param_id
+           ,report_id
+           ,param_code
+           ,param_name
+           ,default_value
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_sql_param_config
+        WHERE 1=1
+        <if test="reportId > 0">
+            AND report_id = #{reportId}
+        </if>
+    </select> 
+    
+    <!--批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+          update bi_sql_param_config
+            <set>
+            report_id = #{item.reportId}
+           ,param_code = #{item.paramCode}
+           ,param_name = #{item.paramName}
+           ,default_value = #{item.defaultValue}
+           ,update_time = #{item.updateTime}
+           ,remark = #{item.remark}
+            </set>
+          where param_id = #{item.paramId}
+        </foreach>
+    </update>
+    
+    <!--列表-->
+    <select id="count" resultType="Integer" >
+        SELECT 
+            count(*) 
+        FROM bi_sql_param_config 
+    </select> 
+</mapper>
+
+
+

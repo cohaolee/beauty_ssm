@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inkey.bi.dao.sql.SqlConfigDao">
+
+    <!--查询实体-->
+    <select id="get" resultType="SqlConfig">
+		SELECT 
+            sql_id
+           ,report_id
+           ,period_type
+           ,name
+           ,status
+           ,sql_template
+           ,db_conn
+           ,start_time_param
+           ,end_time_param
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_sql_config
+        WHERE sql_id = #{.sqlId}
+	</select>
+
+    <!--添加-->
+    <insert id="add" parameterType="SqlConfig" useGeneratedKeys="true" keyProperty="sqlId">
+		INSERT INTO bi_sql_config (
+            report_id
+           ,period_type
+           ,name
+           ,status
+           ,sql_template
+           ,db_conn
+           ,start_time_param
+           ,end_time_param
+           ,create_time
+           ,update_time
+           ,remark 
+		) VALUES (
+            #{reportId}
+           ,#{periodType}
+           ,#{name}
+           ,#{status}
+           ,#{sqlTemplate}
+           ,#{dbConn}
+           ,#{startTimeParam}
+           ,#{endTimeParam}
+           ,#{createTime}
+           ,#{updateTime}
+           ,#{remark}
+		)
+	</insert>
+
+    <!--更新-->
+    <update id="update" parameterType="SqlConfig">
+		UPDATE  bi_sql_config SET 
+            report_id = #{reportId}
+           ,period_type = #{periodType}
+           ,name = #{name}
+           ,status = #{status}
+           ,sql_template = #{sqlTemplate}
+           ,db_conn = #{dbConn}
+           ,start_time_param = #{startTimeParam}
+           ,end_time_param = #{endTimeParam}
+           ,update_time = #{updateTime}
+           ,remark = #{remark}
+        WHERE sql_id = #{sqlId}
+	</update>
+    
+    <!--删除-->
+    <delete id="delete">
+        DELETE FROM bi_sql_config WHERE sql_id=#{sqlId}
+    </delete>
+    
+    <!--分页-->
+    <select id="getPage" resultType="SqlConfig" >
+        SELECT 
+            sql_id
+           ,report_id
+           ,period_type
+           ,name
+           ,status
+           ,sql_template
+           ,db_conn
+           ,start_time_param
+           ,end_time_param
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_sql_config 
+        LIMIT #{pageStart},#{pageSize}
+    </select>    
+    
+    <!--列表-->
+    <select id="getList" resultType="SqlConfig" >
+        SELECT 
+            sql_id
+           ,report_id
+           ,period_type
+           ,name
+           ,status
+           ,sql_template
+           ,db_conn
+           ,start_time_param
+           ,end_time_param
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_sql_config
+        WHERE 1=1
+        <if test="reportId > 0">
+            AND report_id = #{reportId}
+        </if>
+        <if test="periodType > 0">
+            AND period_type = #{periodType}
+        </if>
+        <if test="status > 0">
+            AND status = #{status}
+        </if>
+        ORDER BY period_type, status
+    </select>
+    
+    <!--批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+          update bi_sql_config
+            <set>
+            report_id = #{item.reportId}
+           ,period_type = #{item.periodType}
+           ,name = #{item.name}
+           ,status = #{item.status}
+           ,sql_template = #{item.sqlTemplate}
+           ,db_conn = #{item.dbConn}
+           ,start_time_param = #{item.startTimeParam}
+           ,end_time_param = #{item.endTimeParam}
+           ,update_time = #{item.updateTime}
+           ,remark = #{item.remark}
+            </set>
+          where sql_id = #{item.sqlId}
+        </foreach>
+    </update>
+    
+    <!--列表-->
+    <select id="count" resultType="Integer" >
+        SELECT 
+            count(*) 
+        FROM bi_sql_config 
+    </select> 
+</mapper>
+
+
+

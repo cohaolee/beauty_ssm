@@ -12,12 +12,16 @@
 <%
 
     //配置
-    String listenRefreshEvent = "treeNodeClick";
+    String listenRefreshEvent = "treeNodeSelected";
     String triggerAddEditEvent = "reportAddEditEvent";
     String triggerMoveEvent = "reportMoveEvent";
+
     String listUrl = path + "/bi/report/list";
     String deleteUrl = path + "/bi/report/delete";
     String moveUrl = path + "/bi/report/move";
+    String sqlUrl = path + "/bi/sql/index";
+    String sqlParamUrl = path + "/bi/sqlparam/index";
+    String sqlColumnUrl = path + "/bi/sqlcolumn/index";
 %>
 
 <%--树形左栏--%>
@@ -69,7 +73,7 @@
                     {
                         title: '状态'
                         , dataIndex: 'status'
-                        , renderer: Format.enumRenderer({1: "启用", 2: "禁用"})
+                        , renderer: Format.enumRenderer({1: '<span class="label label-success">启用</span>', 2: "禁用"})
                         , elStyle: {'text-align': 'center'}
                         , elCls: "center"
                         , width: 50
@@ -78,6 +82,8 @@
                         title: '操作', dataIndex: '', renderer: function (value) {
                         var btns = '<span class="grid-command btn-edit"><i class="icon icon-edit"></i> 编辑</span>';
                         btns += '<span class="grid-command btn-sql"><i class="icon icon-th-list"></i> SQL</span>';
+                        btns += '<span class="grid-command btn-column"><i class="icon icon-th"></i> 列</span>';
+                        btns += '<span class="grid-command btn-param"><i class="icon icon-th-large"></i> 参数</span>';
                         btns += '<span class="grid-command btn-delete"><i class="icon icon-remove-sign"></i> 删除</span>';
                         return btns;
                     }, width: 100
@@ -148,7 +154,16 @@
                     if (sender.hasClass('btn-edit')) {
                         $("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
                         return false;
-                    } else if (sender.hasClass('btn-delete')) {
+                    } else if (sender.hasClass('btn-sql')) {
+                        window.open("<%=sqlUrl%>?reportId="+item.reportId);
+                        return false;
+                    }else if (sender.hasClass('btn-param')) {
+                        window.open("<%=sqlParamUrl%>?reportId="+item.reportId);
+                        return false;
+                    }else if (sender.hasClass('btn-column')) {
+                        window.open("<%=sqlColumnUrl%>?reportId="+item.reportId);
+                        return false;
+                    }   else if (sender.hasClass('btn-delete')) {
                         BUI.Message.Confirm('确认删除？（将删除所有的依赖数据记录）', function () {
                             $.post('<%=deleteUrl%>'
                                     , {reportId: item.reportId}
@@ -260,8 +275,8 @@
                 //刷新
                 $("body").bind("<%= listenRefreshEvent %>", function (event, item) {
                     loadMask.show();
-                    curCateId = item.cateId;
-                    curCateName = item.name;
+                    curCateId = item.id;
+                    curCateName = item.text;
                     $('#gridPanelHeader').html('当前：' + curCateName);
                     $("#txtSearchName").val('');
                     store.load({cateId: curCateId, pageIndex: 0});

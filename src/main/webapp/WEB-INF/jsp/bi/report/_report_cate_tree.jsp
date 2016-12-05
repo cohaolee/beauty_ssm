@@ -81,8 +81,8 @@
                                 }
                             },
                             load: function () {
-                                console.log('load');
-                                console.log('curSelectedNodeId ' + curSelectedNodeId);
+//                                console.log('load');
+//                                console.log('curSelectedNodeId ' + curSelectedNodeId);
 
                                 if (needSelected && tree && curSelectedNodeId > 0) {
                                     setTimeout(function () {
@@ -91,7 +91,7 @@
                                         if (node) {
                                             tree.setSelected(node);
                                             needSelected = false;
-                                            console.log('load->selected')
+//                                            console.log('load->selected')
                                         }
                                     }, 300);
                                 }
@@ -102,6 +102,7 @@
 
                     var curSelectedNodeId = 0;
                     var needSelected = false;
+                    var refreshNode;
 
                     //树形类
                     var tree = new Tree.TreeList({
@@ -115,14 +116,10 @@
                             itemselected: function (ev) {
                                 if (ev.item) {
                                     curSelectedNodeId = ev.item.id;
-                                } else {
-                                    console.log(ev);
+                                    $('body').trigger('treeNodeSelected', ev.item);
                                 }
-
-                                console.log('curSelectedNodeId ' + curSelectedNodeId);
                             },
                             itemclick: function (ev) {
-                                $('body').trigger('treeNodeClick', ev.item.record);
                             }
                         },
                     }).render();
@@ -446,7 +443,7 @@
                         listeners: {
                             //数据预处理
                             beforeprocessload: function (ev) {
-                                var deleteItemIndex = 0;
+                                var deleteItemIndex = -1;
                                 if (ev.data && ev.data.length > 0) {
                                     for (var i = 0; i < ev.data.length; i++) {
                                         ev.data[i].leaf = false;
@@ -461,7 +458,7 @@
                                 }
 
                                 //移除当前要移动的节点
-                                if (deleteItemIndex > 0) {
+                                if (deleteItemIndex >= 0) {
                                     ev.data.splice(deleteItemIndex, 1);
                                 }
 

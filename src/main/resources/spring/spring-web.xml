@@ -39,7 +39,7 @@
 
     <!--扫描web相关的controller-->
     <context:component-scan base-package="com.yingjun.ssm.web"/>
-    <context:component-scan base-package="com.inkey.bi.web.report"/>
+    <context:component-scan base-package="com.inkey.bi.web"/>
 
 	<!--全局异常捕捉 -->
 	<bean class="com.inkey.common.exception.GlobalExceptionResolver" />

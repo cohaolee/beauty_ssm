@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inkey.bi.dao.sql.SqlColumnConfigDao">
+
+    <!--查询实体-->
+    <select id="get" resultType="SqlColumnConfig">
+		SELECT 
+            column_id
+           ,report_id
+           ,column_type
+           ,column_code
+           ,column_name
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_sql_column_config
+        WHERE column_id = #{columnId}
+	</select>
+
+    <!--添加-->
+    <insert id="add" parameterType="SqlColumnConfig" useGeneratedKeys="true" keyProperty="columnId">
+		INSERT INTO bi_sql_column_config (
+            report_id
+           ,column_type
+           ,column_code
+           ,column_name
+           ,create_time
+           ,update_time
+           ,remark 
+		) VALUES (
+            #{reportId}
+           ,#{columnType}
+           ,#{columnCode}
+           ,#{columnName}
+           ,#{createTime}
+           ,#{updateTime}
+           ,#{remark}
+
+		)
+	</insert>
+
+    <!--更新-->
+    <update id="update" parameterType="SqlColumnConfig">
+		UPDATE  bi_sql_column_config SET 
+            report_id = #{reportId}
+           ,column_type = #{columnType}
+           ,column_code = #{columnCode}
+           ,column_name = #{columnName}
+           ,update_time = #{updateTime}
+           ,remark = #{remark}
+        WHERE column_id = #{columnId}
+	</update>
+    
+    <!--删除-->
+    <delete id="delete">
+        DELETE FROM bi_sql_column_config WHERE column_id=#{columnId}
+    </delete>
+    
+    <!--分页-->
+    <select id="getPage" resultType="SqlColumnConfig" >
+        SELECT 
+            column_id
+           ,report_id
+           ,column_type
+           ,column_code
+           ,column_name
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_sql_column_config 
+        LIMIT #{pageStart},#{pageSize}
+    </select>    
+    
+    <!--列表-->
+    <select id="getList" resultType="SqlColumnConfig" >
+        SELECT 
+            column_id
+           ,report_id
+           ,column_type
+           ,column_code
+           ,column_name
+           ,create_time
+           ,update_time
+           ,remark 
+        FROM bi_sql_column_config
+        WHERE 1=1
+        <if test="reportId > 0">
+            AND report_id = #{reportId}
+        </if>
+    </select>
+    
+    <!--批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+          update bi_sql_column_config
+            <set>
+            report_id = #{item.reportId}
+           ,column_type = #{item.columnType}
+           ,column_code = #{item.columnCode}
+           ,column_name = #{item.columnName}
+           ,update_time = #{item.updateTime}
+           ,remark = #{item.remark}
+            </set>
+          where column_id = #{item.columnId}
+        </foreach>
+    </update>
+    
+    <!--列表-->
+    <select id="count" resultType="Integer" >
+        SELECT 
+            count(*) 
+        FROM bi_sql_column_config 
+    </select> 
+</mapper>
+
+
+
