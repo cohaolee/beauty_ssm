@@ -35,7 +35,8 @@ public class SqlColumnConfig
 	/**
 	 * 创建时间
 	 */
-    private Date createTime;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date createTime;
     
 	/**
 	 * 更新时间
@@ -46,7 +47,6 @@ public class SqlColumnConfig
 	/**
 	 * 
 	 */
-	@JsonFormat(pattern = "yyyy-MM-dd")
     private String remark;
     
 

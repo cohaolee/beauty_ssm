@@ -110,7 +110,30 @@
         SELECT 
             count(*) 
         FROM bi_sql_param_config 
-    </select> 
+    </select>
+
+    <!--批量更新-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO bi_sql_param_config (
+            report_id
+            ,param_code
+            ,param_name
+            ,default_value
+            ,create_time
+            ,update_time
+            ,remark
+        ) VALUES
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{reportId}
+            ,#{paramCode}
+            ,#{paramName}
+            ,#{defaultValue}
+            ,#{createTime}
+            ,#{updateTime}
+            ,#{remark}
+        </foreach>
+    </insert>
+
 </mapper>
 
 

@@ -2,9 +2,12 @@ package com.inkey.bi.service.sql.impl;
 
 import com.alibaba.druid.support.logging.Log;
 import com.inkey.bi.entity.sql.SqlConfig;
+import com.inkey.bi.entity.sql.SqlParamConfig;
+import com.inkey.bi.service.sql.SqlColumnConfigService;
 import com.inkey.bi.service.sql.SqlConfigService;
 import com.inkey.bi.dao.sql.SqlConfigDao;
 
+import com.inkey.bi.service.sql.SqlParamConfigService;
 import com.inkey.common.exception.ErrorException;
 import com.inkey.common.util.StrUtils;
 import org.slf4j.Logger;
@@ -29,6 +32,12 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 	@Autowired
 	private SqlConfigDao dao;
 
+	@Autowired
+	private SqlParamConfigService paramService;
+
+	@Autowired
+	private SqlColumnConfigService columnService;
+
 
 	//region 基础方法
 
@@ -50,6 +59,7 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 		entity.setCreateTime(new Date());
 
 		verifyPeriodOnly(entity);
+		verifySqlParam(entity);
 
 		dao.add(entity);
 	}
@@ -61,7 +71,10 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 	public void update(SqlConfig entity) {
 		LOG.info("update(SqlConfig entity)");
 		entity.setUpdateTime(new Date());
+
 		verifyPeriodOnly(entity);
+		verifySqlParam(entity);
+
 		dao.update(entity);
 	}
 
@@ -77,18 +90,77 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 			List<SqlConfig> list = dao.getList(entity.getReportId(), entity.getPeriodType(), (short) 1);
 
 			//更新，排除自己
-			if(entity.getSqlId() > 0){
+			if (entity.getSqlId() > 0) {
 				list = list.stream().filter(i -> i.getSqlId() != entity.getSqlId()).collect(Collectors.toList());
 			}
 
 			if (list.size() > 0) {
 				throw new ErrorException("该周期类型包含可用的sql配置：%s"
 						, StrUtils.join(",", list.stream().map(i -> i.getName()).collect(Collectors.toList()))
-						);
+				);
 			}
 		}
 	}
 
+	/**
+	 * 验证sql参数
+	 * @param entity
+	 */
+	private void verifySqlParam(SqlConfig entity) {
+		List<SqlParamConfig> paramList = paramService.getList(entity.getReportId());
+		List<String> paramCodes = paramService.getSqlParam(entity.getSqlTemplate());
+
+		if (paramList == null || paramList.size() == 0) {
+			//当前没有已配置参数
+			paramService.add(entity.getReportId(), paramCodes);
+			return;
+		}
+
+		if (paramCodes == null || paramCodes.size() == 0) {
+			throw new ErrorException("该报表已有参数，但SQL模板中没有获取到任何参数");
+		}
+
+
+		//已经存在的参数
+		HashSet<String> existSet = paramList.stream().map(i -> i.getParamCode()).collect(Collectors.toCollection(HashSet::new));
+		//SQL模板中的参数
+		HashSet<String> sqlTplSet = paramCodes.stream().collect(Collectors.toCollection(HashSet::new));
+
+		List<String> sqlTplNotExistParam = new ArrayList<>();
+		List<String> oldNotExistParam = new ArrayList<>();
+		for (String item : existSet) {
+			if (!sqlTplSet.contains(item)) {
+				sqlTplNotExistParam.add(item);
+			}
+		}
+
+		for (String item : sqlTplSet) {
+			if (!existSet.contains(item)) {
+				oldNotExistParam.add(item);
+			}
+		}
+
+
+		if (sqlTplNotExistParam.size() == 0 || oldNotExistParam.size() == 0) {
+			return;
+		}
+
+		StringBuilder errorMsg = new StringBuilder();
+		if (sqlTplNotExistParam.size() > 0){
+			errorMsg.append("SQL模板中不存在的已配置的参数:");
+			errorMsg.append(StrUtils.join(",", new ArrayList<Object>(sqlTplNotExistParam)));
+			errorMsg.append(";");
+		}
+
+		if(oldNotExistParam.size()>0){
+			errorMsg.append("SQL模板中多余已配置的参数:");
+			errorMsg.append(StrUtils.join(",", new ArrayList<Object>(sqlTplNotExistParam)));
+			errorMsg.append(";");
+		}
+
+		throw new ErrorException(errorMsg.toString());
+
+	}
 
 	/**
 	 * 删除实体
@@ -120,18 +192,19 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 
 	/**
 	 * 拷贝出一个新的配置，默认禁用
+	 *
 	 * @param sqlId
 	 */
 	@Override
 	public void copy(int sqlId) {
 		SqlConfig old = dao.get(sqlId);
-		if(old==null){
+		if (old == null) {
 			throw new ErrorException("被拷贝的SQL配置不存在，sqlId:%s", sqlId);
 		}
 
 		old.setSqlId(0);
-		old.setName("拷贝于："+ old.getName());
-		old.setStatus((short)2);
+		old.setName("拷贝于：" + old.getName());
+		old.setStatus((short) 2);
 		//其他参数,列配置
 		this.add(old);
 	}

@@ -43,6 +43,12 @@ public interface SqlParamConfigService
 	List<String> getSqlParam(String sqlTpl);
 
 	String getSql(String sqlTpl, Map<String, Object> data);
+
+	/**
+	 * 将参数code直接转换为参数实体并保存
+	 * @param paramCodes
+	 */
+	void add(int reportId, List<String> paramCodes);
 	//endregion
 
 }

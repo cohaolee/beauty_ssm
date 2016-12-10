@@ -91,12 +91,16 @@ public class SqlColumnConfigServiceImpl implements SqlColumnConfigService {
 	 */
 	@Override
 	public List<String> getSqlColumn(String sqlTpl) {
+		HashSet<String> columnSet = new HashSet<String>();
 		ArrayList<String> columns = new ArrayList<>();
 		Matcher m = Pattern.compile("\\[\\[([\\w\\.]*)\\]\\]").matcher(sqlTpl);
 		while (m.find()) {
 			String group = m.group();
 			group = group.replaceAll("\\[|\\]", "");
-			columns.add(group);
+			if(!columnSet.contains(group)){
+				columns.add(group);
+				columnSet.add(group);
+			}
 		}
 		return columns;
 	}

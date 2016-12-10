@@ -3,6 +3,7 @@ package com.inkey.bi.dao.sql;
 import com.inkey.bi.entity.sql.SqlParamConfig;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -53,7 +54,13 @@ public interface SqlParamConfigDao
 	 * 统计条数
 	 */
     int count();
-    //endregion    
+
+	/**
+	 * 批量插入
+	 * @param sqlParamConfigs
+	 */
+	void batchInsert(List<SqlParamConfig> sqlParamConfigs);
+	//endregion
 
 }
 
