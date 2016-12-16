@@ -104,11 +104,15 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 
 	/**
 	 * 验证sql参数
+	 *
 	 * @param entity
 	 */
 	private void verifySqlParam(SqlConfig entity) {
 		List<SqlParamConfig> paramList = paramService.getList(entity.getReportId());
 		List<String> paramCodes = paramService.getSqlParam(entity.getSqlTemplate());
+
+		LOG.info("paramList:" + StrUtils.joinStr(",", paramList.stream().map(i -> i.getParamCode()).collect(Collectors.toList())));
+		LOG.info("paramCodes:" + StrUtils.joinStr(",", paramCodes));
 
 		if (paramList == null || paramList.size() == 0) {
 			//当前没有已配置参数
@@ -126,6 +130,7 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 		//SQL模板中的参数
 		HashSet<String> sqlTplSet = paramCodes.stream().collect(Collectors.toCollection(HashSet::new));
 
+
 		List<String> sqlTplNotExistParam = new ArrayList<>();
 		List<String> oldNotExistParam = new ArrayList<>();
 		for (String item : existSet) {
@@ -141,18 +146,22 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 		}
 
 
+
+
 		if (sqlTplNotExistParam.size() == 0 || oldNotExistParam.size() == 0) {
+			LOG.info("sqlTplNotExistParam.size():"+sqlTplNotExistParam.size());
+			LOG.info("oldNotExistParam.size():"+oldNotExistParam.size());
 			return;
 		}
 
 		StringBuilder errorMsg = new StringBuilder();
-		if (sqlTplNotExistParam.size() > 0){
+		if (sqlTplNotExistParam.size() > 0) {
 			errorMsg.append("SQL模板中不存在的已配置的参数:");
 			errorMsg.append(StrUtils.join(",", new ArrayList<Object>(sqlTplNotExistParam)));
 			errorMsg.append(";");
 		}
 
-		if(oldNotExistParam.size()>0){
+		if (oldNotExistParam.size() > 0) {
 			errorMsg.append("SQL模板中多余已配置的参数:");
 			errorMsg.append(StrUtils.join(",", new ArrayList<Object>(sqlTplNotExistParam)));
 			errorMsg.append(";");

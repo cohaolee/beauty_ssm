@@ -1,6 +1,8 @@
 package com.inkey.bi.service.sql.impl;
 
+import com.inkey.bi.entity.sql.SqlConfig;
 import com.inkey.bi.entity.sql.SqlParamConfig;
+import com.inkey.bi.service.sql.SqlConfigService;
 import com.inkey.bi.service.sql.SqlParamConfigService;
 import com.inkey.bi.dao.sql.SqlParamConfigDao;
 
@@ -24,6 +26,8 @@ public class SqlParamConfigServiceImpl implements SqlParamConfigService {
 	@Autowired
 	private SqlParamConfigDao dao;
 
+	@Autowired
+	private SqlConfigService sqlConfigService;
 
 	//region 基础方法
 
@@ -60,6 +64,7 @@ public class SqlParamConfigServiceImpl implements SqlParamConfigService {
 	 */
 	@Override
 	public void delete(int paramId) {
+
 		dao.delete(paramId);
 	}
 
@@ -141,7 +146,7 @@ public class SqlParamConfigServiceImpl implements SqlParamConfigService {
 	 */
 	@Override
 	public void add(int reportId, List<String> paramCodes) {
-		if (reportId<=0 || paramCodes == null || paramCodes.size() > 0) {
+		if (reportId<=0 || paramCodes == null || paramCodes.size() == 0) {
 			return;
 		}
 
@@ -156,6 +161,7 @@ public class SqlParamConfigServiceImpl implements SqlParamConfigService {
 			sqlParamConfig.setCreateTime(new Date());
 			sqlParamConfig.setUpdateTime(new Date());
 			sqlParamConfig.setRemark("程序添加");
+			sqlParamConfigs.add(sqlParamConfig);
 		}
 
 		dao.batchInsert(sqlParamConfigs);

@@ -1,10 +1,8 @@
 package com.inkey.bi.web.sql;
 
 import com.inkey.bi.entity.report.Report;
-import com.inkey.bi.entity.sql.SqlConfig;
 import com.inkey.bi.entity.sql.SqlParamConfig;
 import com.inkey.bi.service.report.ReportService;
-import com.inkey.bi.service.sql.SqlConfigService;
 import com.inkey.bi.service.sql.SqlParamConfigService;
 import com.inkey.common.dto.BaseResult;
 import com.inkey.common.exception.ErrorException;
@@ -86,14 +84,14 @@ public class SqlParamConfigController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public
 	@ResponseBody
-	BaseResult<Object> delete(Model model, int sqlId) {
+	BaseResult<Object> delete(Model model, int paramId) {
 		LOG.info("invoke----------/report/delete");
 
-		if (sqlId <= 0) {
+		if (paramId <= 0) {
 			return new BaseResult<Object>(false, "没有选择要删除的SQL配置");
 		}
 
-		service.delete(sqlId);
+		service.delete(paramId);
 
 		return new BaseResult<Object>(true, null);
 	}

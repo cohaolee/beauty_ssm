@@ -112,7 +112,7 @@
         FROM bi_sql_param_config 
     </select>
 
-    <!--批量更新-->
+    <!--批量插入-->
     <insert id="batchInsert" parameterType="java.util.List">
         INSERT INTO bi_sql_param_config (
             report_id
@@ -123,14 +123,16 @@
             ,update_time
             ,remark
         ) VALUES
-        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
-            #{reportId}
-            ,#{paramCode}
-            ,#{paramName}
-            ,#{defaultValue}
-            ,#{createTime}
-            ,#{updateTime}
-            ,#{remark}
+        <foreach collection="list" item="item" index="index" open="" close="" separator=",">
+            (
+            #{item.reportId}
+            ,#{item.paramCode}
+            ,#{item.paramName}
+            ,#{item.defaultValue}
+            ,#{item.createTime}
+            ,#{item.updateTime}
+            ,#{item.remark}
+            )
         </foreach>
     </insert>
 
