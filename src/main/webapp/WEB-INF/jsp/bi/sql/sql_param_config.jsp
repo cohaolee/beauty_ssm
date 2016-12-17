@@ -33,6 +33,18 @@
             <h3>SQL参数配置</h3>
         </div>
 
+        <ul class="bui-tab button-tabs">
+            <li class="bui-tab-item">
+                <a class="bui-tab-item-text" href="<%=path%>/bi/sql/index?reportId=${report.reportId}">SQL</a>
+            </li>
+            <li class="bui-tab-item">
+                <a class="bui-tab-item-text" href="<%=path%>/bi/sqlcolumn/index?reportId=${report.reportId}">表列</a>
+            </li>
+            <li class="bui-tab-item bui-tab-item-selected">
+                <a class="bui-tab-item-text" href="<%=path%>/bi/sqlparam/index?reportId=${report.reportId}">参数</a>
+            </li>
+        </ul>
+
         <div class="panel panel-head-borded panel-small">
             <div class="panel-header clearfix">
                 <h3 id="gridPanelHeader" class="pull-left">${report.name}

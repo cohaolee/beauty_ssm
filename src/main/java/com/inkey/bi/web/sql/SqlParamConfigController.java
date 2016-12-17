@@ -43,8 +43,6 @@ public class SqlParamConfigController {
 		}
 
 		model.addAttribute(report);
-		LOG.info("invoke----------/sql/index　{}", report.getName());
-
 		return "bi/sql/sql_param_config";
 	}
 
@@ -52,7 +50,6 @@ public class SqlParamConfigController {
 	public
 	@ResponseBody
 	BaseResult<Object> list(Model model, int reportId) {
-		LOG.info("invoke----------/sql/list");
 		List<SqlParamConfig> list = service.getList(reportId);
 		return new BaseResult<Object>(true, list);
 
@@ -62,8 +59,6 @@ public class SqlParamConfigController {
 	public
 	@ResponseBody
 	BaseResult<Object> addedit(Model model, SqlParamConfig sqlParam) {
-		LOG.info("invoke----------/sql/addedit {}",sqlParam);
-
 		if (StrUtils.isNullOrEmpty(sqlParam.getParamCode())) {
 			return new BaseResult<Object>(false, "名称不能为空");
 		}
@@ -85,8 +80,6 @@ public class SqlParamConfigController {
 	public
 	@ResponseBody
 	BaseResult<Object> delete(Model model, int paramId) {
-		LOG.info("invoke----------/report/delete");
-
 		if (paramId <= 0) {
 			return new BaseResult<Object>(false, "没有选择要删除的SQL配置");
 		}
@@ -96,4 +89,23 @@ public class SqlParamConfigController {
 		return new BaseResult<Object>(true, null);
 	}
 
+
+	@RequestMapping(value = "/verify", method = RequestMethod.POST)
+	public
+	@ResponseBody
+	BaseResult<Object> verify(Model modelint, int reportId) {
+
+		if(reportId<=0){
+			throw new ErrorException("报表不存在");
+		}
+
+		Report report = reportService.get(reportId);
+		if(report==null) {
+			throw new ErrorException("报表不存在");
+		}
+
+
+
+		return new BaseResult<Object>(true, null);
+	}
 }

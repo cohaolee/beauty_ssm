@@ -8,45 +8,19 @@
 
 <%@include file="/WEB-INF/jsp/common/tag.jsp" %>
 <%
-    String listUrl = path + "/bi/sqlcolumn/list";
-    String deleteUrl = path + "/bi/sqlcolumn/delete";
+    String listUrl = path + "/bi/sql/list";
+    String deleteUrl = path + "/bi/sql/delete";
+    String copyUrl = path + "/bi/sql/copy";
 
-    String triggerAddEditEvent = "sqlColumnAddEditEvent";
+    String triggerAddEditEvent = "sqlAddEditEvent";
+
+    int divCode = (int) (Math.random() * 1000);
+    String gridDivId = "grid_" + divCode;
 %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>报表-SQL列配置</title>
-    <style>
-        table {
-            font: inherit;
-        }
-    </style></head>
-
-<body>
-
-<div class="main-container" id="cpcontainer">
-    <div id="wapper">
-
-        <div style="margin-bottom: 10px;">
-            <h3>SQL列配置</h3>
-        </div>
-
-        <ul class="bui-tab button-tabs">
-            <li class="bui-tab-item">
-                <a class="bui-tab-item-text" href="<%=path%>/bi/sql/index?reportId=${report.reportId}">SQL</a>
-            </li>
-            <li class="bui-tab-item bui-tab-item-selected">
-                <a class="bui-tab-item-text" href="<%=path%>/bi/sqlcolumn/index?reportId=${report.reportId}">表列</a>
-            </li>
-            <li class="bui-tab-item">
-                <a class="bui-tab-item-text" href="<%=path%>/bi/sqlparam/index?reportId=${report.reportId}">参数</a>
-            </li>
-        </ul>
-
-        <div class="panel panel-head-borded panel-small">
+<div class="panel panel-head-borded panel-small">
             <div class="panel-header clearfix">
-                <h3 id="gridPanelHeader" class="pull-left">${report.name}
+                <h3 class="pull-left">${report.name}
                  <input id="reportId" type="hidden" value="${report.reportId}">
                 </h3>
                 <div class="pull-right">
@@ -58,7 +32,7 @@
                     </button>
                 </div>
             </div>
-            <div id="grid">
+            <div id="<%=gridDivId%>">
 
             </div>
 
@@ -72,22 +46,33 @@
                             var Format = Grid.Format;
 
                             var columns = [
-                                {title: '列Code', dataIndex: 'columnCode',},
-                                {title: '列名称', dataIndex: 'columnName',},
                                 {
-                                    title: '列类型'
-                                    , dataIndex: 'columnType'
-                                    , renderer: Format.enumRenderer({1: '数据', 2: "X轴", 3: "图例"})
+                                    title: '周期类型'
+                                    , dataIndex: 'periodType'
+                                    , renderer: Format.enumRenderer({1: "分钟", 2: "小时", 3: "天", 4:"月", 5:"季度", 6:"年"})
+                                    , elStyle: {'text-align': 'center'}
+                                    , elCls: "center"
+                                    , width: 70
+                                },
+                                {title: '报表名称', dataIndex: 'name',},
+                                {
+                                    title: '状态'
+                                    , dataIndex: 'status'
+                                    , renderer: Format.enumRenderer({1: '<span class="label label-success">启用</span>', 2: "禁用"})
                                     , elStyle: {'text-align': 'center'}
                                     , elCls: "center"
                                     , width: 50
                                 },
-                                {title: '备注', dataIndex: 'remark',},
+                                {title: '报表备注', dataIndex: 'remark',},
+                                {title: '开始时间参数', dataIndex: 'startTimeParam',},
+                                {title: '结束时间参数', dataIndex: 'endTimeParam',},
+                                {title: '连接名', dataIndex: 'dbConn',},
                                 {title: '创建时间', dataIndex: 'createTime',},
                                 {title: '更新时间', dataIndex: 'updateTime',},
                                 {
                                     title: '操作', dataIndex: '', renderer: function (value) {
                                     var btns = '<span class="grid-command btn-edit"><i class="icon icon-edit"></i> 编辑</span>';
+                                    btns += '<span class="grid-command btn-copy" title="拷贝一个出一个新的配置，默认禁用"><i class="icon icon-share"></i> 拷贝</span>';
                                     btns += '<span class="grid-command btn-delete"><i class="icon icon-remove-sign"></i> 删除</span>';
                                     return btns;
                                 }, width: 100
@@ -96,7 +81,7 @@
 
                             //遮罩层
                             var loadMask = new Mask.LoadMask({
-                                el: '#grid',
+                                el: '#<%=gridDivId%>',
                                 msg: '正在处理中...'
                             });
 
@@ -132,7 +117,7 @@
 
                             //表格类
                             var grid = new Grid.Grid({
-                                render: '#grid',
+                                render: '#<%=gridDivId%>',
                                 //height: uiControlHeight,
                                 columns: columns,
                                 store: store,
@@ -154,10 +139,33 @@
                                 if (sender.hasClass('btn-edit')) {
                                     $("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
                                     return false;
+                                }if (sender.hasClass('btn-copy')) {
+                                    //item.oldSqlId = item.sqlId;
+                                    //item.sqlId = 0;
+                                    //$("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
+
+                                    var param = {sqlId: item.sqlId};
+                                    $.post('<%=copyUrl%>'
+                                            , param
+                                            , function (data) {
+                                                loadMask.hide();
+                                                if (data && data.success) {
+                                                    store.load();
+                                                } else if (data.error && data.error != '') {
+                                                    BUI.Message.Alert(data.error, 'error');
+                                                    return false;
+                                                }
+                                            }, 'json')
+                                            .error(function (jqXHR, textStatus, responseText) {
+                                                loadMask.hide();
+                                                BUI.Message.Alert("网络错误，" + jqXHR.status + "，" + textStatus, "error");
+                                                return false;
+                                            });
+                                    return false;
                                 } else if (sender.hasClass('btn-delete')) {
-                                    BUI.Message.Confirm('确认删除？', function () {
+                                    BUI.Message.Confirm('确认删除？（将删除所有的依赖数据记录）', function () {
                                         $.post('<%=deleteUrl%>'
-                                                , {columnId: item.columnId}
+                                                , {sqlId: item.sqlId}
                                                 , function (data) {
                                                     loadMask.hide();
                                                     if (data && data.success) {
@@ -190,20 +198,19 @@
                                 $("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
                             })
 
-                            $("#btnListRefresh").click(function () {
+                            $("body").bind('clickTabSqlConfig', function () {
+                                loadMask.show();
                                 store.load();
                             })
-
                         });
 
             </script>
 
         </div>
 
-    </div>
-</div>
 
-<jsp:include page="_sql_column_add_edit.jsp"></jsp:include>
+
+<jsp:include page="_sql_add_edit.jsp"></jsp:include>
 
 
 <script>

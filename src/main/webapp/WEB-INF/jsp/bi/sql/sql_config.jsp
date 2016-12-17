@@ -22,7 +22,8 @@
         table {
             font: inherit;
         }
-    </style></head>
+    </style>
+</head>
 
 <body>
 
@@ -32,11 +33,23 @@
         <div style="margin-bottom: 10px;">
             <h3>SQL配置</h3>
         </div>
+        <ul class="bui-tab button-tabs">
+            <li class="bui-tab-item bui-tab-item-selected">
+                <a class="bui-tab-item-text" href="<%=path%>/bi/sql/index?reportId=${report.reportId}">SQL</a>
+            </li>
+            <li class="bui-tab-item">
+                <a class="bui-tab-item-text" href="<%=path%>/bi/sqlcolumn/index?reportId=${report.reportId}">表列</a>
+            </li>
+            <li class="bui-tab-item">
+                <a class="bui-tab-item-text" href="<%=path%>/bi/sqlparam/index?reportId=${report.reportId}">参数</a>
+            </li>
+        </ul>
+
 
         <div class="panel panel-head-borded panel-small">
             <div class="panel-header clearfix">
                 <h3 id="gridPanelHeader" class="pull-left">${report.name}
-                 <input id="reportId" type="hidden" value="${report.reportId}">
+                    <input id="reportId" type="hidden" value="${report.reportId}">
                 </h3>
                 <div class="pull-right">
                     <button class="button" id="btnListRefresh" title="刷新列表">
@@ -64,7 +77,7 @@
                                 {
                                     title: '周期类型'
                                     , dataIndex: 'periodType'
-                                    , renderer: Format.enumRenderer({1: "分钟", 2: "小时", 3: "天", 4:"月", 5:"季度", 6:"年"})
+                                    , renderer: Format.enumRenderer({1: "分钟", 2: "小时", 3: "天", 4: "月", 5: "季度", 6: "年"})
                                     , elStyle: {'text-align': 'center'}
                                     , elCls: "center"
                                     , width: 70
@@ -72,11 +85,19 @@
                                 {title: '报表名称', dataIndex: 'name',},
                                 {
                                     title: '状态'
-                                    , dataIndex: 'status'
-                                    , renderer: Format.enumRenderer({1: '<span class="label label-success">启用</span>', 2: "禁用"})
-                                    , elStyle: {'text-align': 'center'}
-                                    , elCls: "center"
-                                    , width: 50
+                                    ,
+                                    dataIndex: 'status'
+                                    ,
+                                    renderer: Format.enumRenderer({
+                                        1: '<span class="label label-success">启用</span>',
+                                        2: "禁用"
+                                    })
+                                    ,
+                                    elStyle: {'text-align': 'center'}
+                                    ,
+                                    elCls: "center"
+                                    ,
+                                    width: 50
                                 },
                                 {title: '报表备注', dataIndex: 'remark',},
                                 {title: '开始时间参数', dataIndex: 'startTimeParam',},
@@ -154,7 +175,8 @@
                                 if (sender.hasClass('btn-edit')) {
                                     $("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
                                     return false;
-                                }if (sender.hasClass('btn-copy')) {
+                                }
+                                if (sender.hasClass('btn-copy')) {
                                     //item.oldSqlId = item.sqlId;
                                     //item.sqlId = 0;
                                     //$("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
@@ -209,7 +231,7 @@
 
                             $("#btnAddSqlConfig").click(function () {
                                 var item = {};
-                                item.reportId =  $("#reportId").val();
+                                item.reportId = $("#reportId").val();
                                 $("body").trigger("<%= triggerAddEditEvent %>", [item, successFun]);
                             })
 

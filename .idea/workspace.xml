@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f4c8bc9-7103-4fa9-ae38-9498790a95b3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_column_config_list.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_config_list.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_config_list.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config_index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlParamConfigServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlParamConfigServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java" afterPath="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlParamConfigController.java" afterPath="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlParamConfigController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/inkey/common/util/StrUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/inkey/common/util/StrUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/bi/sql/SqlParamConfigDao.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/bi/sql/SqlParamConfigDao.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp" />
     </list>
     <ignored path="beauty_ssm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,129 +34,116 @@
     <favorites_list name="beauty_ssm" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SqlConfigServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StrUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/common/util/StrUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlParamConfigController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlParamConfigController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_sql_param_add_edit.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_add_edit.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="18" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sql_param_config.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="94" column="81" selection-start-line="94" selection-start-column="81" selection-end-line="94" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlParamConfigService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/SqlParamConfigService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlParamConfigServiceImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlParamConfigServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7">
-              <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlParamConfigDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/dao/sql/SqlParamConfigDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlParamConfigDao.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/bi/sql/SqlParamConfigDao.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.083334">
-              <caret line="130" column="31" selection-start-line="130" selection-start-column="31" selection-end-line="130" selection-end-column="31" />
-              <folding>
-                <marker date="1481877017672" expanded="true" signature="278:537" placeholder="SELECT param... bi_sql_param_config" />
-                <marker date="1481877017672" expanded="true" signature="665:1054" placeholder="INSERT INTO bi_sql_param_config... " />
-                <marker date="1481877017672" expanded="true" signature="1139:1434" placeholder="UPDATE bi_sq... " />
-                <marker date="1481877017672" expanded="true" signature="1498:1555" placeholder="DELETE FROM " />
-                <marker date="1481877017672" expanded="true" signature="1652:1915" placeholder="SELECT param... bi_sql_param_config" />
-                <marker date="1481877017672" expanded="true" signature="2016:2239" placeholder="SELECT param... bi_sql_param_config" />
-                <marker date="1481877017672" expanded="true" signature="2545:2908" placeholder="update bi_sq... " />
-                <marker date="1481877017672" expanded="true" signature="3015:3077" placeholder="SELECT count... bi_sql_param_config" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlColumnConfigServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlColumnConfigServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="97" column="37" selection-start-line="97" selection-start-column="37" selection-end-line="97" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#771#772#0" expanded="false" />
-                <element signature="e#802#803#0" expanded="false" />
-                <element signature="e#1176#1177#0" expanded="false" />
-                <element signature="e#1203#1204#0" expanded="false" />
-                <element signature="e#1573#1574#0" expanded="false" />
-                <element signature="e#1608#1609#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.57930607">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="sql_config_index.jsp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config_index.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-11.708333">
+                  <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="sql_column_config.jsp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-10.833333">
+                  <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="44" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="sql_config.jsp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-6.875">
+                  <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="45" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SqlConfigController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="sql_param_config.jsp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.64696485">
+                  <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_sql_config_list.jsp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_config_list.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="10.625">
+                  <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_sql_param_add_edit.jsp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_add_edit.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="58.125">
+                  <caret line="12" column="48" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="48" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="_sql_config_list.jsp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_config_list.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-4.4444447">
+                  <caret line="34" column="35" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="35" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_sql_param_config_list.jsp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_config_list.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="17.296297">
+                  <caret line="66" column="44" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_sql_column_config_list.jsp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_column_config_list.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.33546326">
+                  <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -173,12 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_add_edit.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/inkey/common/dto/PagedList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/inkey/common/dto/BaseResult.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resource/ui/bui/cs/extension.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resource/ui/bui/fixed/bootcss.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/report_manage.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/shared/bui/bui-layout.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree_node_select.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/report/ReportController.java" />
@@ -201,29 +187,35 @@
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/dao/sql/SqlConfigDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/bi/sql/SqlConfigDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/SqlConfigService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlConfigParamController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/entity/sql/SqlParamConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp" />
         <option value="$PROJECT_DIR$/src/test/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_add_edit.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlColumnConfigController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/dao/sql/SqlColumnConfigDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/bi/sql/SqlColumnConfigDao.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_column_add_edit.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/entity/sql/SqlColumnConfig.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_add_edit.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/SqlParamConfigService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/dao/sql/SqlParamConfigDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlColumnConfigServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlParamConfigController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/common/util/StrUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/bi/sql/SqlParamConfigDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlParamConfigServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlParamConfigController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config_list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config_list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_config_list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_config_list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_column_config_list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config_index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp" />
       </list>
     </option>
   </component>
@@ -489,6 +481,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -816,6 +810,44 @@
               <option name="myItemId" value="bi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sql" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beauty_ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beauty_ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -924,11 +956,97 @@
               <option name="myItemId" value="inkey" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sql" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beauty_ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beauty_ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="inkey" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="report" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beauty_ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beauty_ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="inkey" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -942,7 +1060,7 @@
     <property name="js-jscs-nodeInterpreter" value="D:\Program Files\nodejs\node.exe" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="SearchEverywhereHistoryKey" value="dao.xml&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/resources/mapper/bi/sql/SqlParamConfigDao.xml&#10;sql_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp&#10;_sql&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_add_edit.jsp&#10;sqlp&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/sql/SqlParamConfigController.java&#10;sqlcol&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlColumnConfigServiceImpl.java&#10;sqlconfigserviceim&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java&#10;RE&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp&#10;SQL_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp&#10;sql_col&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config.jsp&#10;sql_config&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp&#10;_sql_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_add_edit.jsp&#10;sqlconfig.java&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/entity/sql/SqlConfig.java&#10;column&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/entity/sql/SqlColumnConfig.java&#10;daoxml&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/resources/mapper/bi/sql/SqlConfigDao.xml&#10;colu&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/entity/sql/SqlColumnConfig.java&#10;contr&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/sql/SqlColumnConfigController.java&#10;sqlparam_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_add_edit.jsp&#10;dao.java&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/dao/sql/SqlParamConfigDao.java&#10;_add&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_add_edit.jsp&#10;xml&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/resources/mapper/bi/sql/SqlParamConfigDao.xml&#10;sqlparamconfig&#9;PSI&#9;JAVA://com.inkey.bi.entity.sql.SqlParamConfig&#10;sqlPara&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlParamConfigServiceImpl.java&#10;stru&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/common/util/StrUtils.java&#10;impl&#9;PSI&#9;JAVA://com.inkey.bi.service.sql.impl.SqlColumnConfigServiceImpl&#10;sqlconfigim&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java&#10;sqlconfig&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlParamConfigServiceImpl.java&#10;list.jsp&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp&#10;imp&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java&#10;cont&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java&#10;configjs&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp&#10;dao&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/dao/sql/SqlConfigDao.java&#10;Stru&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/common/util/StrUtils.java&#10;im&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/report/impl/ReportCateServiceImpl.java&#10;SqlConfig&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java&#10;serv&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/SqlConfigService.java&#10;sqlcont&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java&#10;GlobalExceptionResolver&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/common/exception/GlobalExceptionResolver.java&#10;sqldao&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/resources/mapper/bi/sql/SqlConfigDao.xml&#10;sqljs&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp&#10;_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/report_manage.jsp&#10;con&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/report/ReportController.java&#10;css&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/resource/ui/bui/cs/extension.css&#10;_js&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_add_edit.jsp&#10;controller&#9;PSI&#9;JAVA://com.inkey.bi.web.report.ReportCateController&#10;report.java&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/dao/report/ReportDao.java&#10;list&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp&#10;jsp&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp&#10;_re&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp" />
+    <property name="SearchEverywhereHistoryKey" value="c&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java&#10;sqlconfigim&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java&#10;dao.xml&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/resources/mapper/bi/sql/SqlParamConfigDao.xml&#10;sql_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp&#10;_sql&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_add_edit.jsp&#10;sqlp&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/sql/SqlParamConfigController.java&#10;sqlcol&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlColumnConfigServiceImpl.java&#10;sqlconfigserviceim&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java&#10;RE&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp&#10;SQL_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp&#10;sql_col&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config.jsp&#10;sql_config&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp&#10;_sql_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_add_edit.jsp&#10;sqlconfig.java&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/entity/sql/SqlConfig.java&#10;column&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/entity/sql/SqlColumnConfig.java&#10;daoxml&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/resources/mapper/bi/sql/SqlConfigDao.xml&#10;colu&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/entity/sql/SqlColumnConfig.java&#10;contr&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/sql/SqlColumnConfigController.java&#10;sqlparam_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_add_edit.jsp&#10;dao.java&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/dao/sql/SqlParamConfigDao.java&#10;_add&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_add_edit.jsp&#10;xml&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/resources/mapper/bi/sql/SqlParamConfigDao.xml&#10;sqlparamconfig&#9;PSI&#9;JAVA://com.inkey.bi.entity.sql.SqlParamConfig&#10;sqlPara&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlParamConfigServiceImpl.java&#10;stru&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/common/util/StrUtils.java&#10;impl&#9;PSI&#9;JAVA://com.inkey.bi.service.sql.impl.SqlColumnConfigServiceImpl&#10;sqlconfig&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlParamConfigServiceImpl.java&#10;list.jsp&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp&#10;imp&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java&#10;cont&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java&#10;configjs&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp&#10;dao&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/dao/sql/SqlConfigDao.java&#10;Stru&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/common/util/StrUtils.java&#10;im&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/report/impl/ReportCateServiceImpl.java&#10;SqlConfig&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java&#10;serv&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/service/sql/SqlConfigService.java&#10;sqlcont&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java&#10;GlobalExceptionResolver&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/common/exception/GlobalExceptionResolver.java&#10;sqldao&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/resources/mapper/bi/sql/SqlConfigDao.xml&#10;sqljs&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp&#10;_&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/report_manage.jsp&#10;con&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/web/report/ReportController.java&#10;css&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/resource/ui/bui/cs/extension.css&#10;_js&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_add_edit.jsp&#10;controller&#9;PSI&#9;JAVA://com.inkey.bi.web.report.ReportCateController&#10;report.java&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/java/com/inkey/bi/dao/report/ReportDao.java&#10;list&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp&#10;jsp&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp&#10;_re&#9;FILE&#9;file://E:/Workspace/Java_Idea/TestWeb/beauty_ssm/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/inkey/bi/web" />
   </component>
   <component name="RecentsManager">
@@ -957,6 +1075,12 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\webapp\WEB-INF\shared\bui" />
+      <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\resources\mapper" />
+      <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\resources\mapper\bi\report" />
+      <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\webapp\resource\js" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.inkey.bi.web.sql" />
       <recent name="com.inkey.bi.web.report" />
@@ -970,12 +1094,6 @@
       <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\java\com\inkey\bi\service\sql" />
       <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\resources\mapper\bi\sql" />
       <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\java\com\inkey\bi\dao\sql" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\webapp\WEB-INF\shared\bui" />
-      <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\resources\mapper" />
-      <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\resources\mapper\bi\report" />
-      <recent name="E:\Workspace\Java_Idea\TestWeb\beauty_ssm\src\main\webapp\resource\js" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat7">
@@ -1687,6 +1805,7 @@
       <workItem from="1481686106131" duration="2582000" />
       <workItem from="1481763122355" duration="3677000" />
       <workItem from="1481873472426" duration="6301000" />
+      <workItem from="1481936647465" duration="13630000" />
     </task>
     <task id="LOCAL-00001" summary="分类管理">
       <created>1478165642766</created>
@@ -1802,7 +1921,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="404425000" />
+    <option name="totallyTimeSpent" value="418055000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1829,7 +1948,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26435536" sideWeight="0.68603414" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18283582" sideWeight="0.49288255" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13965885" sideWeight="0.49288255" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19296375" sideWeight="0.50711745" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1927,6 +2046,12 @@
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_config_list.jsp</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java</url>
           <line>86</line>
@@ -1934,7 +2059,7 @@
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="16" />
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1947,34 +2072,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6161765">
-          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/report_cate_tree.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="46.041668">
-          <caret line="296" column="24" selection-start-line="296" selection-start-column="24" selection-end-line="296" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/Maven/repository/org/springframework/spring-context/4.2.0.RELEASE/spring-context-4.2.0.RELEASE.jar!/org/springframework/ui/Model.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05940594">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_cate_tree_node_select.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_add_edit.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-23.333334">
@@ -2074,13 +2171,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="109" column="25" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/yingjun/ssm/dao/GoodsDaoTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2159,20 +2249,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlColumnConfigController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36923078">
-          <caret line="34" column="65" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.720447">
-          <caret line="197" column="39" selection-start-line="197" selection-start-column="39" selection-end-line="197" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/report/_report_list.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -2215,13 +2291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3178914">
-          <caret line="94" column="30" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Program Files/Java/jdk1.8.0_65/src.zip!/java/lang/AbstractStringBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.083076924">
@@ -2233,22 +2302,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35538462">
           <caret line="135" column="18" selection-start-line="135" selection-start-column="18" selection-end-line="135" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_add_edit.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="81" selection-start-line="94" selection-start-column="81" selection-end-line="94" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2282,21 +2335,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#259#260#0" expanded="false" />
+            <element signature="e#301#302#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/bi/sql/SqlParamConfigDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.083334">
+        <state vertical-scroll-proportion="0.0">
           <caret line="130" column="31" selection-start-line="130" selection-start-column="31" selection-end-line="130" selection-end-column="31" />
           <folding>
             <marker date="1481877017672" expanded="true" signature="278:537" placeholder="SELECT param... bi_sql_param_config" />
@@ -2311,28 +2360,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlParamConfigController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/SqlParamConfigService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlParamConfigServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7">
-          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlColumnConfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="94" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlParamConfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="82" column="27" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/service/sql/impl/SqlConfigServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="156" column="53" selection-start-line="156" selection-start-column="53" selection-end-line="156" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_add_edit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="58.125">
+          <caret line="12" column="48" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_param_config_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="17.296297">
+          <caret line="66" column="44" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_column_config_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33546326">
+          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="45" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_config_index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.708333">
+          <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/inkey/bi/web/sql/SqlConfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/_sql_config_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="10.625">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_column_config.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.833333">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="44" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bi/sql/sql_param_config.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64696485">
+          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
           <folding />
         </state>
       </provider>

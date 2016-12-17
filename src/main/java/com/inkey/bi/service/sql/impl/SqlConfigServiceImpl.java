@@ -171,6 +171,11 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 
 	}
 
+
+	public void verifyCanEditOrAddParamColumn(){
+
+	}
+
 	/**
 	 * 删除实体
 	 */
@@ -219,23 +224,9 @@ public class SqlConfigServiceImpl implements SqlConfigService {
 	}
 
 
-//	public void fetchSqlParam(String sqlTpl){
-//		Matcher m = Pattern.compile("\\{\\{([\\w\\.]*)\\}\\}").matcher(sqlTpl);
-//		while (m.find()) {
-//			String group = m.group();
-//			group = group.replaceAll("\\{|\\}", "");
-//			LOG.info("参数：{}", group);
-//		}
-//	}
-//
-//	public void fetchSqlColumn(String sqlTpl){
-//		Matcher m = Pattern.compile("\\[\\[([\\w\\.]*)\\]\\]").matcher(sqlTpl);
-//		while (m.find()) {
-//			String group = m.group();
-//			group = group.replaceAll("\\[|\\]", "");
-//			LOG.info("列：{}", group);
-//		}
-//	}
+
+
+
 
 }
 

@@ -46,7 +46,6 @@ public class SqlConfigController {
 		}
 
 		model.addAttribute(report);
-		LOG.info("invoke----------/sql/index　{}", report.getName());
 
 		return "bi/sql/sql_config";
 	}
